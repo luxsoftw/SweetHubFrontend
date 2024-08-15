@@ -1,7 +1,11 @@
+import Header from "./components/header";
+
 export default function Home() {
    return (
-      <main className="bg-lime-500 text-red-700">
-         <div>teste</div>
-      </main>
+      <div className="text-primary">
+         <section className="h-[700px] bg-bg-header bg-contain bg-no-repeat">
+            <Header />
+         </section>
+      </div>
    );
 }
