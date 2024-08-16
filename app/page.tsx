@@ -32,7 +32,7 @@ export default function Home() {
                </button>
             </section>
 
-            <section className="relative flex items-center gap-5 px-5 pt-24">
+            <section className="relative z-10 flex items-center gap-5 px-5 pt-24">
                <div className="flex flex-col items-center text-secondary/50">
                   {/* teste grátis */}
                   <h1 className="text-2xl font-bold text-[#F7A932]">14 DIAS</h1>
