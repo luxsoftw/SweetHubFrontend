@@ -12,7 +12,7 @@ const MenuMobile = ({ isOpen, toggleMenu }: MenuMobileProps) => {
 
    return (
       <section
-         className={`fixed inset-0 backdrop-blur-sm ${isOpen ? "animate-opacity" : "animate-closeopacity"} `}
+         className={`fixed inset-0 z-50 backdrop-blur-sm ${isOpen ? "animate-opacity" : "animate-closeopacity"} `}
       >
          <div
             className={`absolute right-0 top-0 z-50 h-screen w-[75%] max-w-[500px] border-l border-blue-900 bg-tertiary ${isOpen ? "animate-menubar" : "animate-closemenubar"}`}
