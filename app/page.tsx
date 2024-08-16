@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
    return (
       <div className="text-primary">
-         <section className="h-[600px] bg-bg-header bg-contain bg-no-repeat">
+         <section className="h-[700px] bg-bg-header bg-contain bg-no-repeat">
             <Header />
 
             <section className="flex flex-col items-center gap-4 pt-2">
@@ -131,6 +131,58 @@ export default function Home() {
                   height={348}
                   className="absolute right-0 top-20"
                />
+            </section>
+         </section>
+         {/* gestão da Loja */}
+         <section className="flex h-[1300px] flex-col items-center bg-gestao bg-cover bg-no-repeat">
+            <section className="flex flex-col items-center pt-24 text-center">
+               <h1 className="w-[200px] text-2xl font-semibold text-primary/50">
+                  Domine a Gestão Da{" "}
+                  <span className="text-primary">Sua Loja</span>
+               </h1>
+
+               <div className="ml-[-28px] h-[5px] w-[138px] rounded-md bg-[#F7A932]"></div>
+
+               <p className="w-[260px] pt-10 font-extralight">
+                  Controle de estoque, clientes e PDV em uma única plataforma.
+                  Teste grátis!
+               </p>
+
+               <Image
+                  src="/bitmap.png"
+                  alt="Dashboard"
+                  width={209}
+                  height={210}
+               />
+
+               <button className="mt-20 rounded-xl bg-[#F7A932] p-1 px-3 text-sm text-secondary">
+                  VER DETALHES
+               </button>
+            </section>
+
+            <section className="flex flex-col items-center pt-20 text-center">
+               <h1 className="w-[280px] text-2xl font-semibold text-primary/50">
+                  Venda com <span className="text-primary">Flexibilidade</span>{" "}
+                  e <span className="text-primary">Poder</span>
+               </h1>
+
+               <div className="h-[5px] w-[240px] rounded-md bg-[#F7A932]"></div>
+
+               <p className="w-[280px] pt-10 font-extralight">
+                  Página de vendas personalizável para se adaptar às suas
+                  necessidades. Experimente grátis!
+               </p>
+
+               <Image
+                  src="/bitmap.png"
+                  alt="Dashboard"
+                  width={209}
+                  height={210}
+               />
+
+               <button className="mt-20 rounded-xl bg-[#F7A932] p-1 px-3 text-sm text-secondary">
+                  VER DETALHES
+               </button>
             </section>
          </section>
       </div>
