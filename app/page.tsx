@@ -1,6 +1,7 @@
 import { IoPlayOutline } from "react-icons/io5";
 import Header from "./components/header";
 import Image from "next/image";
+import PlanCard from "./components/plan-card";
 
 export default function Home() {
    return (
@@ -133,6 +134,7 @@ export default function Home() {
                />
             </section>
          </section>
+
          {/* gestão da Loja */}
          <section className="flex h-[1300px] flex-col items-center bg-gestao bg-cover bg-no-repeat">
             <section className="flex flex-col items-center pt-24 text-center">
@@ -184,6 +186,13 @@ export default function Home() {
                   VER DETALHES
                </button>
             </section>
+         </section>
+
+         <section className="flex flex-col items-center gap-32 py-14">
+            <PlanCard />
+            <PlanCard />
+            <PlanCard />
+            <PlanCard />
          </section>
       </div>
    );
