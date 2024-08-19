@@ -6,11 +6,11 @@ import InputForm from "../components/input-form";
 
 const LoginPage = () => {
    return (
-      <div className="border-x-[20px] border-y-[10px] border-[#004E90]">
-         <div className="flex flex-col gap-10 rounded-md border bg-white p-4 pb-[7.4rem] outline outline-[#004E90]">
+      <div className="flex h-screen items-center justify-center overflow-hidden border-x-[20px] border-y-[10px] border-[#004E90]">
+         <div className="flex h-[100%] w-full max-w-md flex-col gap-10 rounded-md border bg-white p-4 pb-[7.4rem] outline outline-[#004E90]">
             <HeaderRegister title="Entrar" text="Entrar com E-mail" />
 
-            <form className="flex flex-col items-center justify-center gap-5">
+            <form className="flex flex-col items-center justify-center gap-y-10">
                <InputForm type="email" name="email" placeholder="E-mail" />
 
                <PasswordInputForm
@@ -18,7 +18,7 @@ const LoginPage = () => {
                   name="password"
                   placeholder="Senha"
                />
-               <div className="flex w-full flex-row items-center justify-between gap-8">
+               <div className="mb-10 flex w-full flex-row items-center justify-between">
                   <label className="flex flex-row items-center">
                      <input
                         className="mx-2 size-4 border pr-2 accent-[#F7A932]"
@@ -33,7 +33,7 @@ const LoginPage = () => {
                   </button>
                </div>
 
-               <button className="my-14 mb-[4.6rem] rounded-md bg-[#F7A932] px-20 py-2 text-3xl font-light text-white">
+               <button className="my-14 mb-[4.6rem] items-end rounded-md bg-[#F7A932] px-20 py-2 text-3xl font-light text-white">
                   Continuar
                </button>
             </form>
