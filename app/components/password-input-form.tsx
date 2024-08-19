@@ -17,7 +17,7 @@ export default function PasswordInputForm({ ...rest }: InputFormProps) {
          <input
             {...rest}
             type={showPassword ? "text" : "password"}
-            className="h-10 w-60 rounded-md bg-transparent px-5 outline-none"
+            className="h-10 w-[16rem] rounded-md bg-transparent px-5 outline-none"
          />
          <button type="button" onClick={handleChangeVisibility}>
             {showPassword ? (
