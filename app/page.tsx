@@ -208,6 +208,8 @@ export default function Home() {
 
             <Faq faqs={listfaqs} />
          </section>
+
+         <section></section>
       </div>
    );
 }
