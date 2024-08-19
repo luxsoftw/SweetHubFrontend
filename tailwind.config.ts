@@ -14,6 +14,7 @@ const config: Config = {
                "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
             "bg-header": "url('/bgheader.png')",
             gestao: "url('/rectangle.png')",
+            faq: "url('/bgfaq.png')",
          },
          colors: {
             primary: "#FFFFFF",
