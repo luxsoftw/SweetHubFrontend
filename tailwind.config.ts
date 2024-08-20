@@ -16,6 +16,7 @@ const config: Config = {
             gestao: "url('/rectangle.png')",
             faq: "url('/bgfaq.png')",
             "header-404": "url('/bg-header-error.png')",
+            footer: "url('/bg-footer.png')",
          },
          colors: {
             primary: "#FFFFFF",
