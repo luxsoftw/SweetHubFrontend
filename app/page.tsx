@@ -4,6 +4,7 @@ import Image from "next/image";
 import PlanCard from "./components/plan-card";
 import Faq from "./components/faq";
 import { listfaqs } from "./lib/faqs";
+import Footer from "./components/footer";
 
 export default function Home() {
    return (
@@ -196,7 +197,7 @@ export default function Home() {
             <PlanCard />
          </section>
 
-         <section className="flex h-[860px] flex-col items-center gap-10 bg-faq bg-cover bg-no-repeat">
+         <section className="flex h-[840px] flex-col items-center gap-10 bg-faq bg-cover bg-no-repeat">
             <h1 className="pt-40 text-5xl text-primary/30">FAQ</h1>
 
             <div className="h-[10px] w-[116px] rounded-lg bg-[#F7A932]"></div>
@@ -209,7 +210,7 @@ export default function Home() {
             <Faq faqs={listfaqs} />
          </section>
 
-         <section></section>
+         <Footer />
       </div>
    );
 }
