@@ -15,6 +15,7 @@ const config: Config = {
             "bg-header": "url('/bgheader.png')",
             gestao: "url('/rectangle.png')",
             faq: "url('/bgfaq.png')",
+            "header-404": "url('/bg-header-error.png')",
          },
          colors: {
             primary: "#FFFFFF",
@@ -49,6 +50,9 @@ const config: Config = {
             closemenubar: "closemenubar 0.5s ease-in-out",
             opacity: "opacity 0.5s ease-in-out",
             closeopacity: "closeopacity 0.5s ease-in-out",
+         },
+         rotate: {
+            "88-393": "88.393deg",
          },
       },
    },
