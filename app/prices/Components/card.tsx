@@ -24,7 +24,9 @@ export const Card = ({ color, price, plan }: informationProps) => {
                showDetails();
             }}
          >
-            <div className="flex flex-col items-center border-b border-tertiary p-2">
+            <div
+               className={`flex flex-col items-center border-b ${color === "blue" ? "border-sky-400" : "border-tertiary"} p-2`}
+            >
                <h3
                   className={`text-2xl font-bold ${color === "blue" && "text-white"}`}
                >
