@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Header from "../components/header";
 
 function ErrorPage() {
@@ -10,15 +11,19 @@ function ErrorPage() {
 
             <section className="flex flex-grow flex-col items-center justify-center">
                <div className="relative w-full">
-                  <img
+                  <Image
                      className="h-auto w-full"
                      src="/404Page.png"
                      alt="Página de Erro 404"
+                     width={193}
+                     height={100}
                   />
-                  <img
+                  <Image
                      src="/404.png"
-                     alt=""
+                     alt="Error 404"
                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform"
+                     width={193}
+                     height={311}
                   />
                </div>
 
@@ -26,7 +31,7 @@ function ErrorPage() {
                   Essa página não foi encontrada
                </h1>
 
-               <button className="font-open-sans mt-16 h-[40px] w-[163px] rounded-[39px] bg-[#F7A932] text-center text-2xl font-normal uppercase leading-normal text-white">
+               <button className="mt-12 h-[40px] w-[163px] rounded-3xl bg-[#F7A932] text-center font-sans text-3xl text-white">
                   VOLTAR
                </button>
             </section>
