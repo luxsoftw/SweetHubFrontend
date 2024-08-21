@@ -46,7 +46,7 @@ const PricePage = () => {
          <section className="-mt-20 flex flex-col items-center gap-10 bg-white">
             <div className="flex flex-col items-center gap-3">
                <p>
-                  <IoShieldCheckmark className="text-14 text-tertiary" />
+                  <IoShieldCheckmark className="text-6xl text-tertiary" />
                </p>
                <h1 className="w-full max-w-52 text-center text-3xl font-bold">
                   Comparativo dos planos
