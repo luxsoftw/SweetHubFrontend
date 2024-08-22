@@ -1,22 +1,34 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { AuthBackground } from "../components/auth-background";
 import { AuthButton } from "../components/auth-button";
 import { HeaderRegister } from "../components/header-register";
 import InputForm from "../components/input-form";
 import { CheckBoxTerm } from "./components/checkbox-term";
+import type { FormEvent } from "react";
 
 const RegisterPage = () => {
+   const router = useRouter();
+
+   function handleGoTo(event: FormEvent) {
+      event.preventDefault();
+      router.push("/register/informations");
+   }
+
    return (
       <AuthBackground>
          <HeaderRegister title="Registrar" text="Registrar com E-mail" />
-         <form action="">
+         <form
+            onSubmit={handleGoTo}
+            className="flex flex-col items-center gap-6"
+         >
             <InputForm name="name" placeholder="Nome" />
             <InputForm name="email" placeholder="Email" />
             <InputForm type="tel" name="cellphone" placeholder="Número" />
 
-            <div className="flex flex-row gap-3">
-               <label className="flex w-36 rounded-md border border-black/50 px-2 ring-[#F7A932] ring-offset-2 focus-within:border-none focus-within:ring-1">
+            <div className="flex flex-row gap-4">
+               <label className="flex rounded-md border border-black/50 px-2 ring-[#F7A932] ring-offset-2 focus-within:border-none focus-within:ring-1">
                   <input
                      placeholder="Senha"
                      type="password"
@@ -24,7 +36,7 @@ const RegisterPage = () => {
                   />
                </label>
 
-               <label className="flex w-36 items-center rounded-md border border-black/50 px-2 ring-[#F7A932] ring-offset-2 focus-within:border-none focus-within:ring-1">
+               <label className="flex items-center rounded-md border border-black/50 px-2 ring-[#F7A932] ring-offset-2 focus-within:border-none focus-within:ring-1">
                   <input
                      type="password"
                      placeholder="Repetir Senha"
@@ -33,7 +45,7 @@ const RegisterPage = () => {
                </label>
             </div>
             <CheckBoxTerm text="Aceito receber contato no Whatsapp" />
-            <AuthButton type="submit" title="CONTINUAR" />
+            <AuthButton type="submit" title="Continuar" />
          </form>
       </AuthBackground>
    );

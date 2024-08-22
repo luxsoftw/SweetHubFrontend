@@ -4,12 +4,24 @@ import { AuthBackground } from "@/app/components/auth-background";
 import { AuthButton } from "@/app/components/auth-button";
 import { HeaderRegister } from "@/app/components/header-register";
 import { Input } from "@/app/components/input-form/index";
+import { useRouter } from "next/navigation";
+import type { FormEvent } from "react";
 
 const GeneralInformationRegisterPage = () => {
+   const router = useRouter();
+
+   function handleGoTo(event: FormEvent) {
+      event.preventDefault();
+      router.push("/register/address");
+   }
+
    return (
       <AuthBackground>
          <HeaderRegister title="Registrar" text="Informações Gerais" />
-         <form action="">
+         <form
+            onSubmit={handleGoTo}
+            className="flex flex-col items-center gap-6"
+         >
             <Input.Root>
                <Input.Form type="text" placeholder="CNPJ" />
                <Input.IconSearch
