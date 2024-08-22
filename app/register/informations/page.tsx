@@ -9,29 +9,30 @@ const GeneralInformationRegisterPage = () => {
    return (
       <AuthBackground>
          <HeaderRegister title="Registrar" text="Informações Gerais" />
+         <form action="">
+            <Input.Root>
+               <Input.Form type="text" placeholder="CNPJ" />
+               <Input.IconSearch
+                  onClick={() => {
+                     console.log("Search for CNPJ");
+                  }}
+               />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form type="text" placeholder="CNPJ" />
-            <Input.IconSearch
-               onClick={() => {
-                  console.log("Search for CNPJ");
-               }}
-            />
-         </Input.Root>
+            <Input.Root>
+               <Input.Form name="cpf" placeholder="CPF" />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form name="cpf" placeholder="CPF" />
-         </Input.Root>
+            <Input.Root>
+               <Input.Form name="corporate-name" placeholder="Razão Social" />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form name="corporate-name" placeholder="Razão Social" />
-         </Input.Root>
+            <Input.Root>
+               <Input.Form name="brand-name" placeholder="Nome Fantasia" />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form name="brand-name" placeholder="Nome Fantasia" />
-         </Input.Root>
-
-         <AuthButton type="submit" title="Continuar" />
+            <AuthButton type="submit" title="Continuar" />
+         </form>
       </AuthBackground>
    );
 };

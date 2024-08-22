@@ -9,29 +9,29 @@ const AddressRegisterPage = () => {
    return (
       <AuthBackground>
          <HeaderRegister title="Registrar" text="Informações de Endereço" />
+         <form action="">
+            <Input.Root>
+               <Input.Form type="text" placeholder="CEP" name="cep" />
+               <Input.IconSearch />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form type="text" placeholder="CEP" name="cep" />
-            <Input.IconSearch />
-         </Input.Root>
+            <Input.Root>
+               <Input.Form type="text" placeholder="ESTADO" name="state" />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form type="text" placeholder="ESTADO" name="state" />
-         </Input.Root>
+            <Input.Root>
+               <Input.Form type="text" placeholder="CIDADE" name="city" />
+            </Input.Root>
 
-         <Input.Root>
-            <Input.Form type="text" placeholder="CIDADE" name="city" />
-         </Input.Root>
-
-         <Input.Root>
-            <Input.Form
-               type="text"
-               placeholder="ENDEREÇO COMPLETO"
-               name="complete-address"
-            />
-         </Input.Root>
-
-         <AuthButton title="FINALIZAR" onClick={() => {}} />
+            <Input.Root>
+               <Input.Form
+                  type="text"
+                  placeholder="ENDEREÇO COMPLETO"
+                  name="complete-address"
+               />
+            </Input.Root>
+            <AuthButton title="FINALIZAR" onClick={() => {}} />
+         </form>
       </AuthBackground>
    );
 };
