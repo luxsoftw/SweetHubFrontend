@@ -41,7 +41,7 @@ export const Card = ({ color, price, plan }: informationProps) => {
             </div>
 
             <div
-               className={`overflow-hidden transition-all duration-1000 ${toogleDetails === false ? "h-0" : "h-max py-6"} `}
+               className={`overflow-hidden transition-all duration-500 ${toogleDetails === false ? "h-0" : "h-max py-6"} `}
             >
                <ul className="flex flex-col gap-2">
                   <ItemList text="Lorem ipsum dolor sit amet, consectetur adipisicing" />
