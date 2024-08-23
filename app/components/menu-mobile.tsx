@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import { IoClose } from "react-icons/io5";
-import { MdOutlineLogin } from "react-icons/md";
 
 interface MenuMobileProps {
    isOpen: boolean;
@@ -17,59 +16,75 @@ const MenuMobile = ({ isOpen, toggleMenu }: MenuMobileProps) => {
          <div
             className={`absolute right-0 top-0 z-50 h-screen w-[75%] max-w-[500px] border-l border-blue-900 bg-tertiary ${isOpen ? "animate-menubar" : "animate-closemenubar"}`}
          >
-            <div className="flex justify-end p-5 text-primary hover:text-red-500">
+            <div className="flex justify-between p-5 text-primary hover:text-red-500">
+               <span className="text-xl">Menu</span>
+
                <button>
                   <IoClose onClick={toggleMenu} className="size-6" />
                </button>
             </div>
 
-            <nav className="flex w-full flex-col items-end gap-2 px-5">
-               <div
+            <nav className="flex w-full flex-col items-center gap-10 px-5 pt-10">
+               <button
                   onClick={() => {
                      if (window.location.pathname === "/") {
                         toggleMenu();
                      }
                      route.push("/");
                   }}
-                  className="w-full border border-[#dbdadab4] px-5 py-1 text-start text-lg hover:bg-[#1e72e0a4]"
+                  className="w-full px-5 py-1 text-center text-xl font-semibold hover:bg-[#1e72e0a4]"
                >
                   Inicio
-               </div>
+               </button>
 
-               <div
+               <button
                   onClick={() => {
                      if (window.location.pathname === "/prices") {
                         toggleMenu();
                      }
                      route.push("/prices");
                   }}
-                  className="w-full border border-[#dbdadab4] px-5 py-1 text-start text-lg hover:bg-[#1e72e0a4]"
+                  className="w-full px-5 py-1 text-center text-xl font-semibold hover:bg-[#1e72e0a4]"
                >
                   Preço
-               </div>
+               </button>
 
-               <div
+               <button
                   onClick={() => {
                      if (window.location.pathname === "/contact") {
                         toggleMenu();
                      }
                      route.push("/contact");
                   }}
-                  className="w-full border border-[#dbdadab4] px-5 py-1 text-start text-lg hover:bg-[#1e72e0a4]"
+                  className="w-full px-5 py-1 text-center text-xl font-semibold hover:bg-[#1e72e0a4]"
                >
                   Contato
-               </div>
+               </button>
 
-               <div
-                  onClick={() => {
-                     if (window.location.pathname === "/login") {
-                        toggleMenu();
-                     }
-                     route.push("/login");
-                  }}
-                  className="mt-2 flex w-full items-center gap-2 border border-[#dbdadab4] px-5 py-1 text-start text-lg hover:bg-[#1e72e0a4]"
-               >
-                  <MdOutlineLogin className="size-5" /> Login
+               <div className="flex flex-col gap-7">
+                  <button
+                     onClick={() => {
+                        if (window.location.pathname === "/login") {
+                           toggleMenu();
+                        }
+                        route.push("/login");
+                     }}
+                     className="w-[117px] rounded-2xl bg-[#F7A932] py-1 text-center font-semibold"
+                  >
+                     Entrar
+                  </button>
+
+                  <button
+                     onClick={() => {
+                        if (window.location.pathname === "/register") {
+                           toggleMenu();
+                        }
+                        route.push("/register");
+                     }}
+                     className="w-[117px] rounded-2xl bg-[#F7A932] py-1 text-center font-semibold"
+                  >
+                     Cadastrar
+                  </button>
                </div>
             </nav>
          </div>
