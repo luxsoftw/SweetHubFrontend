@@ -14,7 +14,7 @@ const Faq = ({ faqs }: FaqProps) => {
    };
 
    return (
-      <div className="mx-auto h-[450px] max-w-2xl px-2 py-4">
+      <div className="mx-auto h-[360px] max-w-2xl px-2 py-4">
          <div className="space-y-2">
             {faqs.map((faq) => (
                <div

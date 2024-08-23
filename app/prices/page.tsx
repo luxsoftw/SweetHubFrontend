@@ -3,51 +3,21 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import Footer from "../components/footer";
 import Faq from "../components/faq";
 import { Card } from "./Components/card";
+import { listfaqs } from "../lib/faqs";
 
 const PricePage = () => {
-   const faqData = [
-      {
-         id: 1,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 2,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 3,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 4,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 5,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-   ];
-
    return (
-      <div className="font-sans">
-         <section className="h-56 w-full bg-wave-header bg-cover bg-bottom bg-no-repeat text-white">
-            <Header />
+      <section className="font-sans">
+         <section className="h-[110px] w-full bg-wave-header bg-cover bg-bottom bg-no-repeat pt-2 text-primary">
+            <Header color="text-primary" />
          </section>
-         <section className="-mt-20 flex flex-col items-center gap-10 bg-white">
+
+         <section className="flex flex-col items-center gap-10 bg-white">
             <div className="flex flex-col items-center gap-3">
                <p>
                   <IoShieldCheckmark className="text-6xl text-tertiary" />
                </p>
+
                <h1 className="w-full max-w-52 text-center text-3xl font-bold">
                   Comparativo dos planos
                </h1>
@@ -66,12 +36,12 @@ const PricePage = () => {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                </p>
             </div>
-            <Faq faqs={faqData} />
+
+            <Faq faqs={listfaqs} />
          </section>
-         <section className="text-white">
-            <Footer />
-         </section>
-      </div>
+
+         <Footer />
+      </section>
    );
 };
 

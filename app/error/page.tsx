@@ -6,7 +6,7 @@ function ErrorPage() {
       <>
          <div className="flex min-h-screen flex-col bg-[#00559E] bg-cover">
             <div className="h-[90px] w-full bg-header-404 bg-cover bg-no-repeat">
-               <Header />
+               <Header color="text-secondary" />
             </div>
 
             <section className="flex flex-grow flex-col items-center justify-center">

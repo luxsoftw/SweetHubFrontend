@@ -11,7 +11,7 @@ export default function Home() {
       <div className="text-primary">
          {/* Header e Negócio */}
          <section className="h-[420px] bg-bg-header bg-contain bg-no-repeat">
-            <Header />
+            <Header color="text-secondary" />
 
             <section className="flex flex-col items-center gap-4 pt-2">
                <h1 className="text-2xl font-light">
