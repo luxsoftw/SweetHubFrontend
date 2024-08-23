@@ -29,9 +29,9 @@ export function HeaderRegister({ title, text }: HeaderRegisterProps) {
             {isOpen && <MenuMobile isOpen={isOpen} toggleMenu={toggleMenu} />}
          </div>
 
-         <div className="flex flex-row items-center justify-around">
+         <div className="flex flex-row items-center justify-around gap-1">
             <div className="h-0.5 w-14 rounded bg-black/50"></div>
-            <h4 className="font-light text-black/50">{text}</h4>
+            <h4 className="text-nowrap font-light text-black/50">{text}</h4>
             <div className="h-0.5 w-14 rounded bg-black/50"></div>
          </div>
       </div>
