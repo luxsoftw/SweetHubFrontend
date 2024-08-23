@@ -4,7 +4,11 @@ import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import MenuMobile from "./menu-mobile";
 
-const Header = () => {
+interface HeaderProps {
+   color: string;
+}
+
+const Header = ({ color }: HeaderProps) => {
    const [isOpen, setIsOpen] = useState<boolean>(false);
 
    const toggleMenu = () => {
@@ -18,7 +22,7 @@ const Header = () => {
          </div>
 
          <button onClick={toggleMenu}>
-            <IoMenu className="size-8 text-secondary" />
+            <IoMenu className={`size-8 ${color} `} />
          </button>
 
          {isOpen && <MenuMobile isOpen={isOpen} toggleMenu={toggleMenu} />}

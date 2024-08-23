@@ -4,7 +4,7 @@ import { RiLinkedinBoxFill } from "react-icons/ri";
 
 const Footer = () => {
    return (
-      <footer className="mt-10 flex h-full flex-col items-center gap-12 bg-footer bg-cover bg-no-repeat">
+      <footer className="mt-10 flex h-full flex-col items-center gap-12 bg-footer bg-cover bg-no-repeat text-white">
          <h1 className="pt-36">Está esperando o que?</h1>
 
          <button className="rounded-xl bg-[#F7A932] p-1 px-5 text-xs text-secondary">
