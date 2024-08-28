@@ -59,19 +59,21 @@ const PricePage = () => {
                <Card color="white" price={100} plan="Premium" />
             </article>
 
-            <div className="mt-10 flex flex-col items-center gap-10">
-               <h4 className="text-2xl font-medium uppercase text-gray-400">
-                  Dúvidas frequentes
-               </h4>
-               <span className="h-1 w-1/2 bg-amber-400"> </span>
+            <article className="mt-10 flex flex-col items-center gap-10 lg:flex-row lg:items-baseline lg:justify-center">
+               <div className="flex flex-col items-center gap-10">
+                  <h4 className="text-2xl font-medium uppercase text-gray-400">
+                     Dúvidas frequentes
+                  </h4>
+                  <span className="h-1 w-1/2 bg-amber-400"> </span>
 
-               <p className="w-5/6 text-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               </p>
-            </div>
-            <Faq faqs={faqData} />
+                  <p className="w-5/6 text-center">
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+               </div>
+               <Faq faqs={faqData} />
+            </article>
          </section>
-         <section className="text-white">
+         <section className="text-white lg:text-black">
             <Footer />
          </section>
       </div>
