@@ -7,9 +7,9 @@ import { listfaqs } from "../lib/faqs";
 
 const PricePage = () => {
    return (
-      <section className="font-sans">
-         <section className="h-[110px] w-full bg-wave-header bg-cover bg-bottom bg-no-repeat pt-2 text-primary">
-            <Header color="text-primary" />
+      <div className="font-sans">
+         <section className="h-56 w-full bg-wave-header bg-cover bg-bottom bg-no-repeat text-white md:h-72">
+            <Header />
          </section>
 
          <section className="flex flex-col items-center gap-10 bg-white">
@@ -23,10 +23,13 @@ const PricePage = () => {
                </h1>
             </div>
 
-            <Card color="white" price={0} plan="Basico" />
-            <Card color="blue" price={0} plan="Basico" />
-            <Card color="white" price={0} plan="Basico" />
-            <div className="mt-10 flex flex-col items-center gap-20">
+            <article className="m-auto flex w-full flex-col items-center gap-10 px-4 md:gap-5 lg:flex-row lg:justify-center">
+               <Card color="white" price={0} plan="Free" />
+               <Card color="blue" price={50} plan="Basico" />
+               <Card color="white" price={100} plan="Premium" />
+            </article>
+
+            <div className="mt-10 flex flex-col items-center gap-10">
                <h4 className="text-2xl font-medium uppercase text-gray-400">
                   Dúvidas frequentes
                </h4>

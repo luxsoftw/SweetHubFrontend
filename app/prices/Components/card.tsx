@@ -18,22 +18,22 @@ export const Card = ({ color, price, plan }: informationProps) => {
 
    return (
       <>
-         <article
-            className={`w-full max-w-72 rounded-xl border shadow-rounded ${color === "white" ? "bg-white" : "bg-blue-800"}`}
+         <div
+            className={`w-full max-w-72 rounded-xl border shadow-rounded sm:max-w-96 ${color === "white" ? "bg-white" : "bg-blue-800"}`}
             onClick={() => {
                showDetails();
             }}
          >
             <div
-               className={`flex flex-col items-center border-b ${color === "blue" ? "border-sky-400" : "border-tertiary"} p-2`}
+               className={`flex flex-col items-center border-b pb-5 ${color === "blue" ? "border-sky-400" : "border-tertiary"} p-2`}
             >
                <h3
-                  className={`text-2xl font-bold ${color === "blue" && "text-white"}`}
+                  className={`text-3xl font-bold ${color === "blue" && "text-white"}`}
                >
                   {plan}
                </h3>
                <p className={`font-bold ${color === "blue" && "text-white"}`}>
-                  ${price},00
+                  $ {price},00
                </p>
                <p className="text-xs font-bold text-slate-400">por month</p>
 
@@ -53,7 +53,7 @@ export const Card = ({ color, price, plan }: informationProps) => {
             <button className="ml-auto block p-4 text-xs font-bold text-slate-400">
                Mostrar {toogleDetails === false ? "detalhes" : "menos"}
             </button>
-         </article>
+         </div>
       </>
    );
 };
