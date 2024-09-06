@@ -5,9 +5,13 @@ interface AuthButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
    title: string;
 }
 
-export function AuthButton({ title }: AuthButtonProps) {
+export function AuthButton({ title, ...rest }: AuthButtonProps) {
    return (
-      <button className="w-full items-center justify-center rounded-md bg-[#F7A932] px-12 py-2 text-3xl font-light text-white">
+      <button
+         type="submit"
+         className="w-full rounded bg-orange-400 p-2 text-white transition-colors hover:bg-orange-500 md:max-w-48 md:self-end md:rounded-3xl md:text-base"
+         {...rest}
+      >
          {title}
       </button>
    );
