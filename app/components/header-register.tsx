@@ -12,7 +12,7 @@ interface HeaderRegisterProps {
 export function HeaderRegister({ title, text }: HeaderRegisterProps) {
    const [isOpen, setIsOpen] = useState<boolean>(false);
 
-   const toggleMenu = () => {
+   const handleToggleMenu = () => {
       setIsOpen(!isOpen);
    };
 
@@ -24,11 +24,13 @@ export function HeaderRegister({ title, text }: HeaderRegisterProps) {
                <div className="h-1.5 w-20 rounded-md bg-blue-600"></div>
             </div>
 
-            <button onClick={toggleMenu}>
+            <button onClick={handleToggleMenu}>
                <IoMenu className="size-8 text-secondary" />
             </button>
 
-            {isOpen && <MenuMobile isOpen={isOpen} toggleMenu={toggleMenu} />}
+            {isOpen && (
+               <MenuMobile isOpen={isOpen} toggleMenu={handleToggleMenu} />
+            )}
          </div>
 
          <div className="flex flex-row items-center justify-around gap-1">
