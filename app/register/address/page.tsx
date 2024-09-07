@@ -2,7 +2,7 @@
 
 import { AuthButton } from "@/app/components/auth-button";
 import { AuthRightSide } from "@/app/components/auth-right-side";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Input } from "@/app/components/input-form/index";
 import { FormEvent, useState } from "react";
 import { AuthLayout } from "@/app/components/auth-layout";
