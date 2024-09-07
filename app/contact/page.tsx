@@ -32,15 +32,12 @@ const Contact = () => {
             <section className="w-full">
                <form className="mt-7 flex w-full grid-cols-1 flex-col gap-y-4 md:grid md:grid-cols-2 md:gap-4 md:gap-y-10">
                   <InputFormContact placeholder="Qual seu nome? *" />
-
                   <InputFormContact placeholder="Qual seu e-mail? *" />
-
                   <InputFormContact
                      type="tel"
                      placeholder="Qual seu telefone?"
                   />
                   <InputFormContact placeholder="Qual é a sua empresa?" />
-
                   <textarea
                      placeholder="Escreva sua mensagem aqui"
                      className="col-span-2 w-full rounded-md border border-white bg-transparent p-4 text-white placeholder:text-white focus:border-none focus:text-[#F7A932] focus:outline-none focus:ring-2 focus:ring-[#F7A932] focus:placeholder:text-[#F7A932]"
