@@ -1,53 +1,108 @@
 "use client";
-import { FaArrowRight } from "react-icons/fa";
-import { HeaderRegister } from "../components/header-register";
-import PasswordInputForm from "../components/password-input-form";
-import InputForm from "../components/input-form";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
+import { AuthLayout } from "../components/auth-layout";
+import { AuthLeftSide } from "../components/auth-left-side";
+import { Input } from "../components/input-form/index";
+import { CheckBoxTerm } from "../register/components/checkbox-term";
+import MenuMobile from "../components/menu-mobile";
 
 const LoginPage = () => {
-   const route = useRouter();
+   const router = useRouter();
+   const [isOpen, setIsOpen] = useState(false);
+   const [showPassword, setShowPassword] = useState(false);
+
+   const handleClose = () => {
+      router.back();
+   };
+
+   const handleToggleMenu = () => {
+      setIsOpen(!isOpen);
+   };
+
+   const handleShowPassword = () => {
+      setShowPassword(!showPassword);
+   };
 
    return (
-      <div className="flex h-screen items-center justify-center overflow-hidden border-x-[20px] border-y-[10px] border-[#004E90]">
-         <div className="flex h-[100%] w-full max-w-md flex-col gap-10 rounded-md border bg-white p-4 pb-[7.4rem] outline outline-[#004E90]">
-            <HeaderRegister title="Entrar" text="Entrar com E-mail" />
+      <AuthLayout>
+         <AuthLeftSide title="Bem vindo de volta" handleClose={handleClose} />
+         <div className="flex w-full flex-col p-4 md:w-1/2 md:flex-grow md:p-8">
+            <div className="flex w-full flex-col gap-10 p-4 md:flex-grow md:p-6">
+               <header className="flex flex-row items-center justify-between md:flex md:items-center md:justify-between">
+                  <FaArrowLeft size={30} className="md:hidden" />
+                  <div className="flex flex-col items-center justify-center gap-2 md:flex md:items-start md:justify-start md:gap-5">
+                     <h2 className="pb-2 text-3xl font-semibold md:text-5xl md:font-bold">
+                        Entrar
+                     </h2>
+                     <div className="h-2 w-24 rounded-md bg-blue-600 md:h-3 md:w-20 md:rounded-md"></div>
+                  </div>
 
-            <form className="flex flex-col items-center justify-center gap-y-10">
-               <InputForm type="email" name="email" placeholder="E-mail" />
-
-               <PasswordInputForm
-                  type="password"
-                  name="password"
-                  placeholder="Senha"
-               />
-
-               <div className="mb-10 flex w-full flex-row items-center justify-between">
-                  <label className="flex flex-row items-center">
-                     <input
-                        className="mx-2 size-4 border pr-2 accent-[#F7A932]"
-                        type="checkbox"
-                     />
-
-                     <p className="font-light text-black/55">Lembrar</p>
-                  </label>
-
-                  <button
-                     onClick={() => route.push("/register")}
-                     type="button"
-                     className="flex flex-row items-center justify-between gap-1 font-light text-[#00559E]"
-                  >
-                     <FaArrowRight size={16} />
-                     Criar nova conta
+                  <button className="md:hidden" onClick={handleToggleMenu}>
+                     <IoMenu className="size-8 text-secondary" />
                   </button>
+
+                  {isOpen && (
+                     <MenuMobile
+                        isOpen={isOpen}
+                        toggleMenu={handleToggleMenu}
+                     />
+                  )}
+               </header>
+
+               <div className="flex flex-row items-center justify-center gap-5">
+                  <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>
+                  <h4 className="text-nowrap font-light text-black/50">
+                     Ou entre com e-mail
+                  </h4>
+                  <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>
                </div>
 
-               <button className="my-14 mb-[4.6rem] items-end rounded-md bg-[#F7A932] px-20 py-2 text-3xl font-light text-white">
-                  Continuar
-               </button>
-            </form>
+               <form className="mt-8 flex flex-col space-y-6">
+                  <Input.Root>
+                     <Input.Form
+                        type="email"
+                        name="email"
+                        placeholder="E-mail"
+                     />
+                  </Input.Root>
+
+                  <Input.Root>
+                     <Input.Form
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Senha"
+                     />
+                     <Input.IconPass
+                        onAction={handleShowPassword}
+                        show={showPassword}
+                     />
+                  </Input.Root>
+
+                  <div className="flex items-center justify-between">
+                     <CheckBoxTerm text="Lembrar" />
+                     <button
+                        onClick={() => router.push("/register")}
+                        type="button"
+                        className="flex items-center gap-2 text-sm font-light text-[#00559E]"
+                     >
+                        <FaArrowRight className="ml-1" size={20} />
+                        <p>Criar nova conta</p>
+                     </button>
+                  </div>
+
+                  <button
+                     type="submit"
+                     className="w-full rounded bg-orange-400 p-2 text-white transition-colors hover:bg-orange-500 md:rounded-3xl md:text-base"
+                  >
+                     Continuar
+                  </button>
+               </form>
+            </div>
          </div>
-      </div>
+      </AuthLayout>
    );
 };
 

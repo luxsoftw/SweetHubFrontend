@@ -23,7 +23,11 @@ const RegisterPage = () => {
 
    return (
       <AuthLayout>
-         <AuthLeftSide handleClose={handleClose} />
+         <AuthLeftSide
+            title="Prazer em conhece-lo :)"
+            subtitle="Basta se registrar para se juntar a nós"
+            handleClose={handleClose}
+         />
          <AuthRightSide isOpen={isOpen} handleToggleMenu={handleToggleMenu}>
             <form
                className="mt-4 flex w-full flex-grow flex-col space-y-8 md:mt-8"
