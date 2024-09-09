@@ -25,7 +25,11 @@ const ValidationPage = () => {
 
    return (
       <AuthLayout>
-         <AuthLeftSide handleClose={handleClose} />
+         <AuthLeftSide
+            title="Prazer em conhece-lo :)"
+            subtitle="Basta se registrar para se juntar a nós"
+            handleClose={handleClose}
+         />
          <AuthRightSide
             title="Validar"
             isOpen={isOpen}

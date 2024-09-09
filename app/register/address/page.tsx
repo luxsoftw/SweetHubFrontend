@@ -27,7 +27,11 @@ const AddressRegisterPage = () => {
 
    return (
       <AuthLayout>
-         <AuthLeftSide handleClose={handleClose} />
+         <AuthLeftSide
+            title="Prazer em conhece-lo :)"
+            subtitle="Basta se registrar para se juntar a nós"
+            handleClose={handleClose}
+         />
          <AuthRightSide isOpen={isOpen} handleToggleMenu={handleToggleMenu}>
             <div className="flex flex-row items-center justify-center gap-5">
                <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>

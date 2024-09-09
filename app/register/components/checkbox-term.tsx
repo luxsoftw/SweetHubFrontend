@@ -8,7 +8,7 @@ interface CheckBoxTermProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export function CheckBoxTerm({ text, ...rest }: CheckBoxTermProps) {
    return (
-      <div className="flex flex-row items-center gap-3 pr-9">
+      <div className="flex flex-row items-center gap-3 pr-10">
          <input
             type="checkbox"
             name="terms"
