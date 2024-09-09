@@ -1,15 +1,44 @@
+"use client";
+
+import { useForm } from "react-hook-form";
 import HeaderContact from "./components/header-contact";
 import InputFormContact from "./components/input-form-contact";
 
 import Image from "next/image";
+import validator from "validator";
+import { useHookFormMask } from "use-mask-input";
+import InvolveInputError from "./components/involve-input-error";
+import InputErrorMessage from "../components/input-error-message";
+
+interface ContactFormType {
+   name: string;
+   email: string;
+   phone: Number;
+   company: string;
+   message: string;
+   terms: boolean;
+}
 
 const Contact = () => {
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm<ContactFormType>();
+
+   const registerWithMask = useHookFormMask(register);
+
+   const handleFormSubmit = (data: ContactFormType) => {
+      console.log(data);
+   };
+
    return (
       <div className="flex min-h-screen w-full items-center justify-center bg-[#00559E] px-4 sm:px-6 lg:px-8">
          <div className="h-full w-full rounded-lg bg-blue-900 p-8 shadow-lg md:max-w-4xl md:rounded-3xl lg:h-[700px]">
             <div className="lg:hidden">
                <HeaderContact />
             </div>
+
             <button className="hidden lg:flex">
                <Image
                   className="h-[20px] w-[20px]"
@@ -20,51 +49,198 @@ const Contact = () => {
                   height={100}
                />
             </button>
+
             <section className="hidden text-white lg:flex lg:flex-col">
                <h1 className="text-center text-5xl font-bold">
                   Diga Olá para nós
                </h1>
+
                <h1 className="pt-2 text-center text-[25px] font-normal">
                   Entre em contato conosco a qualquer momento e responderemos o
                   mais rápido possível.
                </h1>
             </section>
+
             <section className="w-full">
-               <form className="mt-7 flex w-full grid-cols-1 flex-col gap-y-4 md:grid md:grid-cols-2 md:gap-4 md:gap-y-10">
-                  <InputFormContact placeholder="Qual seu nome? *" />
+               <form
+                  onSubmit={handleSubmit(handleFormSubmit)}
+                  className="mt-7 flex w-full flex-col gap-y-4 md:grid md:grid-cols-2 md:flex-row md:gap-4 md:gap-y-10"
+               >
+                  <div className="relative">
+                     <InputFormContact>
+                        <input
+                           type="text"
+                           {...register("name", {
+                              required: true,
+                              maxLength: 50,
+                              minLength: 3,
+                           })}
+                           placeholder="Qual seu nome? *"
+                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
+                        />
+                     </InputFormContact>
 
-                  <InputFormContact placeholder="Qual seu e-mail? *" />
+                     <InvolveInputError>
+                        {errors.name?.type === "required" && (
+                           <InputErrorMessage>
+                              Nome é obrigatorio
+                           </InputErrorMessage>
+                        )}
 
-                  <InputFormContact
-                     type="tel"
-                     placeholder="Qual seu telefone?"
-                  />
+                        {errors.name?.type === "maxLength" && (
+                           <InputErrorMessage>
+                              Nome deve ter nom máximo 50 caracteres
+                           </InputErrorMessage>
+                        )}
 
-                  <InputFormContact placeholder="Qual é a sua empresa?" />
+                        {errors.name?.type === "minLength" && (
+                           <InputErrorMessage>
+                              Nome deve ter no mínimo 3 caracteres
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
 
-                  <textarea
-                     placeholder="Escreva sua mensagem aqui"
-                     className="col-span-2 w-full rounded-md border border-white bg-transparent p-4 text-white placeholder:text-white focus:border-none focus:text-[#F7A932] focus:outline-none focus:ring-2 focus:ring-[#F7A932] focus:placeholder:text-[#F7A932]"
-                     rows={4}
-                  ></textarea>
+                  <div className="relative">
+                     <InputFormContact>
+                        <input
+                           type="email"
+                           {...register("email", {
+                              required: true,
+                              validate: (value) => {
+                                 return validator.isEmail(value);
+                              },
+                           })}
+                           placeholder="Qual seu e-mail? *"
+                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
+                        />
+                     </InputFormContact>
 
-                  <section className="col-span-2 flex flex-col gap-3 pt-10 md:flex-row md:items-center md:justify-around">
+                     <div className="botton-[-10px] left-0 mb-[-10px] md:absolute">
+                        {errors.email?.type === "required" && (
+                           <InputErrorMessage>
+                              Email é obrigatorio
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.email?.type === "validate" && (
+                           <InputErrorMessage>Email inválido</InputErrorMessage>
+                        )}
+                     </div>
+                  </div>
+
+                  <div className="relative">
+                     <InputFormContact>
+                        <input
+                           {...registerWithMask("phone", "(99) 99999-9999", {
+                              required: true,
+                              validate: (value) => {
+                                 return validator.isMobilePhone(value, "pt-BR");
+                              },
+                           })}
+                           type="tel"
+                           placeholder="Qual seu telefone?"
+                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
+                        />
+                     </InputFormContact>
+
+                     <InvolveInputError>
+                        {errors.phone?.type === "required" && (
+                           <InputErrorMessage>
+                              Telefone é obrigatorio
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.phone?.type === "validate" && (
+                           <InputErrorMessage>
+                              Telefone inválido
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
+
+                  <div className="relative">
+                     <InputFormContact>
+                        <input
+                           type="text"
+                           {...register("company", {
+                              required: true,
+                              maxLength: 50,
+                              minLength: 2,
+                           })}
+                           placeholder="Qual é a sua empresa?"
+                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
+                        />
+                     </InputFormContact>
+
+                     <InvolveInputError>
+                        {errors.company?.type === "required" && (
+                           <InputErrorMessage>
+                              Nome da empresa é obrigatorio
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.company?.type === "maxLength" && (
+                           <InputErrorMessage>
+                              Nome da empresa deve ter nom máximo 50 caracteres
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.company?.type === "minLength" && (
+                           <InputErrorMessage>
+                              Nome da empresa deve ter no mínimo 3 caracteres
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
+
+                  <div className="relative col-span-2">
+                     <textarea
+                        {...register("message", {
+                           required: true,
+                           maxLength: 500,
+                           minLength: 10,
+                        })}
+                        placeholder="Escreva sua mensagem aqui"
+                        className="w-full rounded-md border border-white bg-transparent p-4 text-white placeholder:text-white focus:border-none focus:text-[#F7A932] focus:outline-none focus:ring-2 focus:ring-[#F7A932] focus:placeholder:text-[#F7A932]"
+                        rows={4}
+                     ></textarea>
+
+                     <InvolveInputError>
+                        {errors.message?.type === "required" && (
+                           <InputErrorMessage>
+                              Mensagem é obrigatorio
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.message?.type === "maxLength" && (
+                           <InputErrorMessage>
+                              Mensagem deve ter nom máximo 500 caracteres
+                           </InputErrorMessage>
+                        )}
+
+                        {errors.message?.type === "minLength" && (
+                           <InputErrorMessage>
+                              Mensagem deve ter no mínimo 10 caracteres
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
+
+                  <section className="col-span-2 flex flex-col gap-3 pt-10 md:flex-row md:items-center md:justify-between">
                      <div className="flex items-center">
                         <input
+                           {...register("terms", { required: true })}
                            type="checkbox"
-                           id="terms"
-                           className="ml-3 mr-3 h-6 w-6 accent-[#F7A932] md:mr-4"
+                           className="mx-3 h-6 w-6 accent-[#F7A932] md:mx-0 md:mr-4"
                         />
 
-                        <label
-                           htmlFor="terms"
-                           className="font-normal text-white md:text-[20px]"
-                        >
+                        <p className="font-normal text-white">
                            Li e aceito os Termos de Serviço e a{" "}
                            <span className="text-[#F7A932]">
-                              Política de Privacidade *
+                              Política de Privacidade
                            </span>
-                        </label>
+                        </p>
                      </div>
 
                      <button
