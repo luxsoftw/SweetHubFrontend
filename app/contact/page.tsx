@@ -10,15 +10,7 @@ import InvolveInputError from "./components/involve-input-error";
 import InputErrorMessage from "../components/input-error-message";
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from "next/navigation";
-
-interface ContactFormType {
-   name: string;
-   email: string;
-   phone: Number;
-   company: string;
-   message: string;
-   terms: boolean;
-}
+import ContactFormType from "../types/contact-form";
 
 const Contact = () => {
    const {
