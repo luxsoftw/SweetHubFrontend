@@ -64,7 +64,7 @@ const Contact = () => {
             <section className="w-full">
                <form
                   onSubmit={handleSubmit(handleFormSubmit)}
-                  className="mt-7 flex w-full flex-col gap-y-4 md:grid md:grid-cols-2 md:flex-row md:gap-4 md:gap-y-10"
+                  className="mt-7 flex w-full flex-col gap-y-5 md:grid md:grid-cols-2 md:flex-row md:gap-4 md:gap-y-10"
                >
                   <div className="relative">
                      <InputFormContact>
@@ -227,20 +227,29 @@ const Contact = () => {
                      </InvolveInputError>
                   </div>
 
-                  <section className="col-span-2 flex flex-col gap-3 pt-10 md:flex-row md:items-center md:justify-between">
-                     <div className="flex items-center">
-                        <input
-                           {...register("terms", { required: true })}
-                           type="checkbox"
-                           className="mx-3 h-6 w-6 accent-[#F7A932] md:mx-0 md:mr-4"
-                        />
+                  <section className="col-span-2 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                     <div className="relative">
+                        <div className="flex items-center gap-3 md:gap-4">
+                           <input
+                              {...register("terms", { required: true })}
+                              type="checkbox"
+                              className="h-6 w-6 accent-[#F7A932]"
+                           />
+                           <p className="text-sm font-normal text-white md:text-base">
+                              Li e aceito os Termos de Serviço e a{" "}
+                              <span className="text-[#F7A932]">
+                                 Política de Privacidade
+                              </span>
+                           </p>
+                        </div>
 
-                        <p className="font-normal text-white">
-                           Li e aceito os Termos de Serviço e a{" "}
-                           <span className="text-[#F7A932]">
-                              Política de Privacidade
-                           </span>
-                        </p>
+                        <InvolveInputError>
+                           {errors.terms?.type === "required" && (
+                              <InputErrorMessage>
+                                 Aceite os termos para continuar
+                              </InputErrorMessage>
+                           )}
+                        </InvolveInputError>
                      </div>
 
                      <button
