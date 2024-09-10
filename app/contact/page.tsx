@@ -4,20 +4,13 @@ import { useForm } from "react-hook-form";
 import HeaderContact from "./components/header-contact";
 import InputFormContact from "./components/input-form-contact";
 
-import Image from "next/image";
 import validator from "validator";
 import { useHookFormMask } from "use-mask-input";
 import InvolveInputError from "./components/involve-input-error";
 import InputErrorMessage from "../components/input-error-message";
-
-interface ContactFormType {
-   name: string;
-   email: string;
-   phone: Number;
-   company: string;
-   message: string;
-   terms: boolean;
-}
+import { TfiClose } from "react-icons/tfi";
+import { useRouter } from "next/navigation";
+import ContactFormType from "../types/contact-form";
 
 const Contact = () => {
    const {
@@ -28,8 +21,14 @@ const Contact = () => {
 
    const registerWithMask = useHookFormMask(register);
 
+   const route = useRouter();
+
    const handleFormSubmit = (data: ContactFormType) => {
       console.log(data);
+   };
+
+   const handleGoBack = () => {
+      route.back();
    };
 
    return (
@@ -39,15 +38,8 @@ const Contact = () => {
                <HeaderContact />
             </div>
 
-            <button className="hidden lg:flex">
-               <Image
-                  className="h-[20px] w-[20px]"
-                  src="/ios-close-empty.png"
-                  alt="Ios Close"
-                  quality={100}
-                  width={193}
-                  height={100}
-               />
+            <button onClick={handleGoBack} className="hidden lg:flex">
+               <TfiClose size={25} className="text-primary" />
             </button>
 
             <section className="hidden text-white lg:flex lg:flex-col">
