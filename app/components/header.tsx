@@ -32,7 +32,7 @@ const Header = ({ color }: HeaderProps) => {
          </div>
 
          <div className="hidden w-full items-center justify-between text-secondary lg:flex">
-            <nav className="flex items-center gap-4 text-xl font-semibold">
+            <nav className="flex items-center gap-6 text-xl font-semibold">
                <button onClick={() => handleRoute("/")}>Home</button>
                <button onClick={() => handleRoute("/prices")}>Preço</button>
                <button onClick={() => handleRoute("/contact")}>Contato</button>
