@@ -1,12 +1,18 @@
+import React, { forwardRef } from "react";
 import type { InputHTMLAttributes } from "react";
 
 interface InputRootProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-export function InputForm({ ...rest }: InputRootProps) {
-   return (
-      <input
-         {...rest}
-         className="h-10 w-[18rem] rounded-md bg-transparent px-5 outline-none"
-      />
-   );
-}
+export const InputForm = forwardRef<HTMLInputElement, InputRootProps>(
+   ({ ...rest }, ref) => {
+      return (
+         <input
+            {...rest}
+            ref={ref}
+            className="h-10 w-[18rem] rounded-md bg-transparent px-5 outline-none"
+         />
+      );
+   },
+);
+
+InputForm.displayName = "InputForm";
