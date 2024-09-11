@@ -5,7 +5,7 @@ import HeaderContact from "./components/header-contact";
 
 import validator from "validator";
 import { useHookFormMask } from "use-mask-input";
-import InvolveInputError from "./components/involve-input-error";
+import InvolveInputError from "../components/involve-input-error";
 import InputErrorMessage from "../components/input-error-message";
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from "next/navigation";
