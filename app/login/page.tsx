@@ -8,6 +8,11 @@ import { AuthLeftSide } from "../components/auth-left-side";
 import { Input } from "../components/input-form/index";
 import { CheckBoxTerm } from "../register/components/checkbox-term";
 import MenuMobile from "../components/menu-mobile";
+import { useForm } from "react-hook-form";
+import LoginForm from "../types/login-form";
+import validator from "validator";
+import InputErrorMessage from "../components/input-error-message";
+import InvolveInputError from "../components/involve-input-error";
 
 const LoginPage = () => {
    const router = useRouter();
@@ -24,6 +29,16 @@ const LoginPage = () => {
 
    const handleShowPassword = () => {
       setShowPassword(!showPassword);
+   };
+
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm<LoginForm>();
+
+   const handleLogin = (data: LoginForm) => {
+      console.log(data);
    };
 
    return (
@@ -60,26 +75,62 @@ const LoginPage = () => {
                   <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>
                </div>
 
-               <form className="mt-8 flex flex-col space-y-6">
-                  <Input.Root>
-                     <Input.Form
-                        type="email"
-                        name="email"
-                        placeholder="E-mail"
-                     />
-                  </Input.Root>
+               <form
+                  onSubmit={handleSubmit(handleLogin)}
+                  className="mt-8 flex flex-col space-y-6"
+               >
+                  <div className="relative">
+                     <Input.Root>
+                        <Input.Form
+                           {...register("email", {
+                              required: true,
+                              validate: (value) => {
+                                 return validator.isEmail(value);
+                              },
+                           })}
+                           type="email"
+                           name="email"
+                           placeholder="E-mail"
+                        />
+                     </Input.Root>
+                     <InvolveInputError>
+                        {errors.email?.type === "required" && (
+                           <InputErrorMessage>
+                              E-mail é obrigatório
+                           </InputErrorMessage>
+                        )}
+                        {errors.email?.type === "validate" && (
+                           <InputErrorMessage>
+                              E-mail inválido
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
 
-                  <Input.Root>
-                     <Input.Form
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        placeholder="Senha"
-                     />
-                     <Input.IconPass
-                        onAction={handleShowPassword}
-                        show={showPassword}
-                     />
-                  </Input.Root>
+                  <div className="relative">
+                     <Input.Root>
+                        <Input.Form
+                           {...register("password", {
+                              required: true,
+                           })}
+                           type={showPassword ? "text" : "password"}
+                           name="password"
+                           placeholder="Senha"
+                        />
+                        <Input.IconPass
+                           onAction={handleShowPassword}
+                           show={showPassword}
+                        />
+                     </Input.Root>
+
+                     <InvolveInputError>
+                        {errors.password?.type === "required" && (
+                           <InputErrorMessage>
+                              Senha é obrigatória
+                           </InputErrorMessage>
+                        )}
+                     </InvolveInputError>
+                  </div>
 
                   <div className="flex items-center justify-between">
                      <CheckBoxTerm text="Lembrar" />
