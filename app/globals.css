@@ -12,8 +12,25 @@
    .text-balance {
       text-wrap: balance;
    }
+
+   input:-webkit-autofill {
+      box-shadow: 0 0 0 1000px transparent inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: unset !important;
+   }
+
+   input:-moz-autofill {
+      background-color: transparent !important;
+      -webkit-text-fill-color: unset !important;
+   }
+
+   input:-ms-autofill {
+      background-color: transparent !important;
+      -webkit-text-fill-color: unset !important;
+   }
+
+   input:-o-autofill {
+      background-color: transparent !important;
+      -webkit-text-fill-color: unset !important;
+   }
 }
-
-
-
-
