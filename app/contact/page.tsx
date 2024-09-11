@@ -2,7 +2,6 @@
 
 import { useForm } from "react-hook-form";
 import HeaderContact from "./components/header-contact";
-import InputFormContact from "./components/input-form-contact";
 
 import validator from "validator";
 import { useHookFormMask } from "use-mask-input";
@@ -11,6 +10,7 @@ import InputErrorMessage from "../components/input-error-message";
 import { TfiClose } from "react-icons/tfi";
 import { useRouter } from "next/navigation";
 import ContactFormType from "../types/contact-form";
+import { InputFormContact } from "./components/input-form-contact";
 
 const Contact = () => {
    const {
@@ -59,18 +59,15 @@ const Contact = () => {
                   className="mt-7 flex w-full flex-col gap-y-5 md:grid md:grid-cols-2 md:flex-row md:gap-4 md:gap-y-10"
                >
                   <div className="relative">
-                     <InputFormContact>
-                        <input
-                           type="text"
-                           {...register("name", {
-                              required: true,
-                              maxLength: 50,
-                              minLength: 3,
-                           })}
-                           placeholder="Qual seu nome? *"
-                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
-                        />
-                     </InputFormContact>
+                     <InputFormContact
+                        type="text"
+                        {...register("name", {
+                           required: true,
+                           maxLength: 50,
+                           minLength: 3,
+                        })}
+                        placeholder="Qual seu nome? *"
+                     />
 
                      <InvolveInputError>
                         {errors.name?.type === "required" && (
@@ -94,19 +91,16 @@ const Contact = () => {
                   </div>
 
                   <div className="relative">
-                     <InputFormContact>
-                        <input
-                           type="email"
-                           {...register("email", {
-                              required: true,
-                              validate: (value) => {
-                                 return validator.isEmail(value);
-                              },
-                           })}
-                           placeholder="Qual seu e-mail? *"
-                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
-                        />
-                     </InputFormContact>
+                     <InputFormContact
+                        type="email"
+                        {...register("email", {
+                           required: true,
+                           validate: (value) => {
+                              return validator.isEmail(value);
+                           },
+                        })}
+                        placeholder="Qual seu e-mail? *"
+                     />
 
                      <div className="botton-[-10px] left-0 mb-[-10px] md:absolute">
                         {errors.email?.type === "required" && (
@@ -122,19 +116,16 @@ const Contact = () => {
                   </div>
 
                   <div className="relative">
-                     <InputFormContact>
-                        <input
-                           {...registerWithMask("phone", "(99) 99999-9999", {
-                              required: true,
-                              validate: (value) => {
-                                 return validator.isMobilePhone(value, "pt-BR");
-                              },
-                           })}
-                           type="tel"
-                           placeholder="Qual seu telefone?"
-                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
-                        />
-                     </InputFormContact>
+                     <InputFormContact
+                        {...registerWithMask("phone", "(99) 99999-9999", {
+                           required: true,
+                           validate: (value) => {
+                              return validator.isMobilePhone(value, "pt-BR");
+                           },
+                        })}
+                        type="tel"
+                        placeholder="Qual seu telefone?"
+                     />
 
                      <InvolveInputError>
                         {errors.phone?.type === "required" && (
@@ -152,26 +143,16 @@ const Contact = () => {
                   </div>
 
                   <div className="relative">
-                     <InputFormContact>
-                        <input
-                           type="text"
-                           {...register("company", {
-                              required: true,
-                              maxLength: 50,
-                              minLength: 2,
-                           })}
-                           placeholder="Qual é a sua empresa?"
-                           className="h-10 w-[18.5rem] rounded-md bg-transparent px-5 text-primary outline-none placeholder:text-primary focus:text-[#F7A932] focus:placeholder:text-[#F7A932]"
-                        />
-                     </InputFormContact>
+                     <InputFormContact
+                        type="text"
+                        {...register("company", {
+                           maxLength: 50,
+                           minLength: 2,
+                        })}
+                        placeholder="Qual é a sua empresa?"
+                     />
 
                      <InvolveInputError>
-                        {errors.company?.type === "required" && (
-                           <InputErrorMessage>
-                              Nome da empresa é obrigatorio
-                           </InputErrorMessage>
-                        )}
-
                         {errors.company?.type === "maxLength" && (
                            <InputErrorMessage>
                               Nome da empresa deve ter nom máximo 50 caracteres
