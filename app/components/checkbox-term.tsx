@@ -16,7 +16,7 @@ export const CheckBoxTerm = forwardRef<HTMLInputElement, CheckBoxTermProps>(
                {...rest}
             />
 
-            {children}
+            <p className="text-wrap text-sm font-normal">{children}</p>
          </div>
       );
    },
