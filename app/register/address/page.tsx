@@ -4,7 +4,7 @@ import { AuthButton } from "@/app/components/auth-button";
 import { AuthRightSide } from "@/app/components/auth-right-side";
 import { useRouter } from "next/navigation";
 import { Input } from "@/app/components/input-form/index";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { AuthLayout } from "@/app/components/auth-layout";
 import { AuthLeftSide } from "@/app/components/auth-left-side";
 import { useForm } from "react-hook-form";
@@ -12,18 +12,24 @@ import { useHookFormMask } from "use-mask-input";
 import InvolveInputError from "@/app/components/involve-input-error";
 import InputErrorMessage from "@/app/components/input-error-message";
 import AddressFormType from "@/app/types/address-form";
+import axios from "axios";
+
+interface AddressCepType {
+   city: string;
+   state: string;
+   street: string;
+}
 
 const AddressRegisterPage = () => {
-   const router = useRouter();
    const [isOpen, setIsOpen] = useState(false);
+   const [isCep, setIsCep] = useState("");
+   const [address, setAddress] = useState<AddressCepType>({
+      city: "",
+      state: "",
+      street: "",
+   });
 
-   const handleClose = () => {
-      router.back();
-   };
-
-   const handleToggleMenu = () => {
-      setIsOpen(!isOpen);
-   };
+   const router = useRouter();
 
    const {
       register,
@@ -32,6 +38,34 @@ const AddressRegisterPage = () => {
    } = useForm<AddressFormType>();
 
    const registerWithMask = useHookFormMask(register);
+
+   const closePage = () => {
+      router.back();
+   };
+
+   const toggleMenu = () => {
+      setIsOpen(!isOpen);
+   };
+
+   const handleInputCepChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setIsCep(e.target.value);
+   };
+
+   const searchCep = async () => {
+      const response = await axios.get(
+         `https://viacep.com.br/ws/${isCep}/json/`,
+      );
+
+      if (response.status === 400) {
+         console.log("CEP não encontrado");
+      }
+
+      setAddress({
+         city: response.data.localidade,
+         state: response.data.estado,
+         street: response.data.logradouro,
+      });
+   };
 
    const handleAddress = (data: AddressFormType) => {
       console.log(data);
@@ -42,9 +76,9 @@ const AddressRegisterPage = () => {
          <AuthLeftSide
             title="Prazer em conhece-lo :)"
             subtitle="Basta se registrar para se juntar a nós"
-            handleClose={handleClose}
+            handleClose={closePage}
          />
-         <AuthRightSide isOpen={isOpen} handleToggleMenu={handleToggleMenu}>
+         <AuthRightSide isOpen={isOpen} handleToggleMenu={toggleMenu}>
             <div className="flex flex-row items-center justify-center gap-5">
                <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>
                <h4 className="text-nowrap font-light text-black/50">
@@ -63,11 +97,12 @@ const AddressRegisterPage = () => {
                            required: true,
                            minLength: 8,
                         })}
+                        value={isCep}
+                        onChange={handleInputCepChange}
                         type="text"
                         placeholder="CEP"
-                        name="cep"
                      />
-                     <Input.IconSearch />
+                     <Input.IconSearch onClick={searchCep} />
                   </Input.Root>
 
                   <InvolveInputError>
@@ -93,6 +128,7 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="ESTADO"
+                        value={address.state}
                      />
                   </Input.Root>
 
@@ -127,6 +163,7 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="CIDADE"
+                        value={address.city}
                      />
                   </Input.Root>
 
@@ -161,6 +198,7 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="ENDEREÇO COMPLETO"
+                        value={address.street}
                      />
                   </Input.Root>
 
