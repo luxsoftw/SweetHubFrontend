@@ -14,26 +14,16 @@ import InputErrorMessage from "@/app/components/input-error-message";
 import AddressFormType from "@/app/types/address-form";
 import axios from "axios";
 
-interface AddressCepType {
-   city: string;
-   state: string;
-   street: string;
-}
-
 const AddressRegisterPage = () => {
    const [isOpen, setIsOpen] = useState(false);
    const [isCep, setIsCep] = useState("");
-   const [address, setAddress] = useState<AddressCepType>({
-      city: "",
-      state: "",
-      street: "",
-   });
 
    const router = useRouter();
 
    const {
       register,
       handleSubmit,
+      setValue,
       formState: { errors },
    } = useForm<AddressFormType>();
 
@@ -52,19 +42,22 @@ const AddressRegisterPage = () => {
    };
 
    const searchCep = async () => {
-      const response = await axios.get(
-         `https://viacep.com.br/ws/${isCep}/json/`,
-      );
+      try {
+         const response = await axios.get(
+            `https://viacep.com.br/ws/${isCep}/json/`,
+         );
 
-      if (response.status === 400) {
-         console.log("CEP não encontrado");
+         if (response.data.erro) {
+            console.log("CEP não encontrado");
+            return;
+         }
+
+         setValue("estado", response.data.estado);
+         setValue("cidade", response.data.localidade);
+         setValue("endereço", response.data.logradouro);
+      } catch (error) {
+         console.log("Erro ao buscar CEP:", error);
       }
-
-      setAddress({
-         city: response.data.localidade,
-         state: response.data.estado,
-         street: response.data.logradouro,
-      });
    };
 
    const handleAddress = (data: AddressFormType) => {
@@ -128,7 +121,6 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="ESTADO"
-                        value={address.state}
                      />
                   </Input.Root>
 
@@ -163,7 +155,6 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="CIDADE"
-                        value={address.city}
                      />
                   </Input.Root>
 
@@ -198,7 +189,6 @@ const AddressRegisterPage = () => {
                         })}
                         type="text"
                         placeholder="ENDEREÇO COMPLETO"
-                        value={address.street}
                      />
                   </Input.Root>
 
