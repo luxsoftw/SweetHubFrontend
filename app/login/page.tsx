@@ -9,10 +9,10 @@ import { Input } from "../components/input-form/index";
 import { CheckBoxTerm } from "../register/components/checkbox-term";
 import MenuMobile from "../components/menu-mobile";
 import { useForm } from "react-hook-form";
-import LoginForm from "../types/login-form";
 import validator from "validator";
 import InputErrorMessage from "../components/input-error-message";
 import InvolveInputError from "../components/involve-input-error";
+import LoginFormType from "../types/login-form";
 
 const LoginPage = () => {
    const router = useRouter();
@@ -35,9 +35,9 @@ const LoginPage = () => {
       register,
       handleSubmit,
       formState: { errors },
-   } = useForm<LoginForm>();
+   } = useForm<LoginFormType>();
 
-   const handleLogin = (data: LoginForm) => {
+   const handleLogin = (data: LoginFormType) => {
       console.log(data);
    };
 
