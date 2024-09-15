@@ -3,13 +3,45 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import Footer from "../components/footer";
 import Faq from "../components/faq";
 import { Card } from "./Components/card";
-import { listfaqs } from "../lib/faqs";
 
 const PricePage = () => {
+   const faqData = [
+      {
+         id: 1,
+         question: "background-image: linear-gradient?",
+         answer:
+            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
+      },
+      {
+         id: 2,
+         question: "background-image: linear-gradient?",
+         answer:
+            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
+      },
+      {
+         id: 3,
+         question: "background-image: linear-gradient?",
+         answer:
+            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
+      },
+      {
+         id: 4,
+         question: "background-image: linear-gradient?",
+         answer:
+            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
+      },
+      {
+         id: 5,
+         question: "background-image: linear-gradient?",
+         answer:
+            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
+      },
+   ];
+
    return (
-      <section className="font-sans">
-         <section className="h-[110px] w-full bg-wave-header bg-cover bg-bottom bg-no-repeat pt-2 text-primary">
-            <Header color="text-primary" />
+      <div className="font-sans">
+         <section className="h-56 w-full bg-wave-header bg-cover bg-bottom bg-no-repeat text-white md:h-72">
+            <Header color={"text-primary"} />
          </section>
 
          <section className="flex flex-col items-center gap-10 bg-white">
@@ -23,25 +55,30 @@ const PricePage = () => {
                </h1>
             </div>
 
-            <Card color="white" price={0} plan="Basico" />
-            <Card color="blue" price={0} plan="Basico" />
-            <Card color="white" price={0} plan="Basico" />
-            <div className="mt-10 flex flex-col items-center gap-20">
-               <h4 className="text-2xl font-medium uppercase text-gray-400">
-                  Dúvidas frequentes
-               </h4>
-               <span className="h-1 w-1/2 bg-amber-400"> </span>
+            <article className="m-auto flex w-full flex-col items-center gap-10 px-4 md:gap-5 lg:flex-row lg:justify-center">
+               <Card color="white" price={0} plan="Free" />
+               <Card color="blue" price={50} plan="Basico" />
+               <Card color="white" price={100} plan="Premium" />
+            </article>
 
-               <p className="w-5/6 text-center">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-               </p>
-            </div>
+            <article className="mt-10 flex flex-col items-center gap-10 lg:flex-row lg:items-baseline lg:justify-center">
+               <div className="flex flex-col items-center gap-10">
+                  <h4 className="text-2xl font-medium uppercase text-gray-400">
+                     Dúvidas frequentes
+                  </h4>
+                  <span className="h-1 w-1/2 bg-amber-400"> </span>
 
-            <Faq faqs={listfaqs} />
+                  <p className="w-5/6 text-center">
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </p>
+               </div>
+               <Faq faqs={faqData} />
+            </article>
          </section>
-
-         <Footer />
-      </section>
+         <section className="text-white lg:text-black">
+            <Footer />
+         </section>
+      </div>
    );
 };
 
