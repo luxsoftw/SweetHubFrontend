@@ -3,41 +3,9 @@ import { IoShieldCheckmark } from "react-icons/io5";
 import Footer from "../components/footer";
 import Faq from "../components/faq";
 import { Card } from "./Components/card";
+import { faqData } from "../lib/faqs";
 
 const PricePage = () => {
-   const faqData = [
-      {
-         id: 1,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 2,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 3,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 4,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-      {
-         id: 5,
-         question: "background-image: linear-gradient?",
-         answer:
-            "background-image: linear-gradient(to top, var(--tw-gradient-stops));",
-      },
-   ];
-
    return (
       <div className="font-sans">
          <section className="h-56 w-full bg-wave-header bg-cover bg-bottom bg-no-repeat text-white md:h-72">
