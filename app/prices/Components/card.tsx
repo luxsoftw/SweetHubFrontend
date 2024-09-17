@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ButtonHire } from "./button";
 import { ItemList } from "./itemListDescription";
+import { useRouter } from "next/navigation";
 
 interface informationProps {
    color: string;
@@ -16,13 +17,16 @@ export const Card = ({ color, price, plan }: informationProps) => {
       setToogleDetails((prev) => !prev);
    };
 
+   const route = useRouter();
+
+   const handleRoute = () => {
+      route.push("/login");
+   };
+
    return (
       <>
          <div
             className={`w-full max-w-72 rounded-xl border shadow-rounded sm:max-w-96 ${color === "white" ? "bg-white" : "bg-blue-800"}`}
-            onClick={() => {
-               showDetails();
-            }}
          >
             <div
                className={`flex flex-col items-center border-b pb-5 ${color === "blue" ? "border-sky-400" : "border-tertiary"} p-2`}
@@ -37,7 +41,7 @@ export const Card = ({ color, price, plan }: informationProps) => {
                </p>
                <p className="text-xs font-bold text-slate-400">por month</p>
 
-               <ButtonHire />
+               <ButtonHire handleRoute={handleRoute} />
             </div>
 
             <div
@@ -50,7 +54,12 @@ export const Card = ({ color, price, plan }: informationProps) => {
                   <ItemList text="Lorem ipsum dolor sit amet, consectetur adipisicing" />
                </ul>
             </div>
-            <button className="ml-auto block p-4 text-xs font-bold text-slate-400">
+            <button
+               onClick={() => {
+                  showDetails();
+               }}
+               className="ml-auto block p-4 text-xs font-bold text-slate-400"
+            >
                Mostrar {toogleDetails === false ? "detalhes" : "menos"}
             </button>
          </div>
