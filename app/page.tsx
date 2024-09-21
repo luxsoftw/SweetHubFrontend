@@ -1,10 +1,12 @@
 import { IoPlayOutline } from "react-icons/io5";
 import Header from "./components/header";
 import Image from "next/image";
-import PlanCard from "./components/plan-card";
+// import PlanCard from "./components/plan-card";
 import Faq from "./components/faq";
 import { listfaqs } from "./lib/faqs";
 import Footer from "./components/footer";
+import { PlanCard } from "./components/plan-card";
+import { plans } from "./lib/plans";
 
 export default function Home() {
    return (
@@ -143,64 +145,92 @@ export default function Home() {
          </section>
 
          {/* gestão da Loja */}
-         <section className="mt-12 flex h-[1300px] flex-col items-center bg-gestao bg-cover bg-no-repeat">
-            <section className="flex flex-col items-center pt-24 text-center">
-               <h1 className="w-[200px] text-2xl font-semibold text-primary/50">
-                  Domine a Gestão Da{" "}
-                  <span className="text-primary">Sua Loja</span>
-               </h1>
+         <section className="mt-20 flex flex-col items-center bg-gestao bg-cover bg-no-repeat pb-32 pt-24 md:my-20 md:bg-wave md:pb-40 md:pt-40">
+            <div className="container mx-auto flex flex-col px-4">
+               <div className="flex flex-col items-center justify-center md:flex-row-reverse md:items-center md:justify-end md:gap-10">
+                  {/* Domine a Gestão Da Sua Loja */}
+                  <div className="mb-10 flex flex-col items-start md:mb-0">
+                     <div>
+                        <h2 className="mb-4 text-center text-2xl font-semibold text-primary/50 md:text-left md:text-4xl">
+                           Domine a Gestão
+                        </h2>
+                        <h2 className="mb-4 text-center text-2xl font-semibold text-primary/50 md:text-left md:text-4xl">
+                           Da <span className="text-primary">Sua Loja</span>
+                        </h2>
+                     </div>
+                     <div className="mb-6 h-1 w-32 bg-[#F7A932]"></div>
+                     <p className="mb-8 max-w-xs text-center text-sm font-light md:text-xl">
+                        Controle de estoque, clientes e PDV em uma única
+                        plataforma. Teste grátis!
+                     </p>
+                     <button className="hidden self-center rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-secondary md:flex md:text-base">
+                        VER DETALHES
+                     </button>
+                  </div>
 
-               <div className="ml-[-28px] h-[5px] w-[138px] rounded-md bg-[#F7A932]"></div>
+                  {/* Dashboard Image */}
+                  <div className="flex flex-col items-center gap-10 md:w-1/2">
+                     <Image
+                        src="/bitmap2.png"
+                        alt="Dashboard"
+                        width={500}
+                        height={500}
+                        className="mx-auto w-full max-w-xl"
+                     />
+                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-secondary md:hidden md:text-base">
+                        VER DETALHES
+                     </button>
+                  </div>
+               </div>
 
-               <p className="w-[260px] pt-10 font-extralight">
-                  Controle de estoque, clientes e PDV em uma única plataforma.
-                  Teste grátis!
-               </p>
+               {/* Venda com Flexibilidade e Poder */}
+               <div className="mt-20 flex flex-col gap-0 md:flex-row md:items-center md:justify-between md:gap-10">
+                  <div className="flex flex-col items-center justify-center md:mb-0 md:w-1/2 md:items-end">
+                     <h2 className="mb-4 text-2xl font-semibold text-primary/50 md:text-4xl">
+                        Venda com{" "}
+                     </h2>
+                     <h2 className="mb-4 text-center text-2xl font-semibold text-primary md:text-4xl">
+                        Flexibilidade <span className="text-primary/50">e</span>{" "}
+                        Poder
+                     </h2>
+                     <div className="mb-6 h-1 w-32 bg-[#F7A932]"></div>
+                     <p className="mb-8 max-w-md text-center text-sm font-light md:text-xl">
+                        Página de vendas personalizável para se adaptar às suas
+                        necessidades. Experimente grátis!
+                     </p>
+                     <button className="hidden rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-secondary md:flex md:text-base">
+                        VER DETALHES
+                     </button>
+                  </div>
 
-               <Image
-                  src="/bitmap.png"
-                  alt="Dashboard"
-                  width={209}
-                  height={210}
-               />
-
-               <button className="mt-20 rounded-xl bg-[#F7A932] p-1 px-3 text-sm text-secondary">
-                  VER DETALHES
-               </button>
-            </section>
-
-            <section className="flex flex-col items-center pt-20 text-center">
-               <h1 className="w-[280px] text-2xl font-semibold text-primary/50">
-                  Venda com <span className="text-primary">Flexibilidade</span>{" "}
-                  e <span className="text-primary">Poder</span>
-               </h1>
-
-               <div className="h-[5px] w-[240px] rounded-md bg-[#F7A932]"></div>
-
-               <p className="w-[280px] pt-10 font-extralight">
-                  Página de vendas personalizável para se adaptar às suas
-                  necessidades. Experimente grátis!
-               </p>
-
-               <Image
-                  src="/bitmap.png"
-                  alt="Dashboard"
-                  width={209}
-                  height={210}
-               />
-
-               <button className="mt-20 rounded-xl bg-[#F7A932] p-1 px-3 text-sm text-secondary">
-                  VER DETALHES
-               </button>
-            </section>
+                  <div className="flex flex-col items-center gap-10 md:w-1/2">
+                     <Image
+                        src="/Bitmap3.png"
+                        alt="Dashboard"
+                        width={500}
+                        height={500}
+                        className="mx-auto w-full max-w-xl"
+                     />
+                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-secondary md:hidden md:text-base">
+                        VER DETALHES
+                     </button>
+                  </div>
+               </div>
+            </div>
          </section>
 
          {/* Planos */}
-         <section className="flex flex-col items-center gap-32 py-14">
-            <PlanCard />
-            <PlanCard />
-            <PlanCard />
-            <PlanCard />
+         <section className="flex flex-col items-center gap-32 py-14 md:flex-row md:items-center md:justify-center md:gap-0">
+            {plans.map((plan, index) => (
+               <PlanCard
+                  key={index}
+                  title={plan.title}
+                  price={plan.price}
+                  features={plan.features}
+                  ctaText={plan.ctaText}
+                  isBestValue={plan.isBestValue}
+               />
+            ))}
          </section>
 
          <section className="flex h-[840px] flex-col items-center gap-10 bg-faq bg-cover bg-no-repeat">
