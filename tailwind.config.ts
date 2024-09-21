@@ -18,6 +18,8 @@ const config: Config = {
             faq: "url('/bgfaq.png')",
             "header-404": "url('/bg-header-error.png')",
             footer: "url('/bg-footer.png')",
+            wave: "url('/wave-desktop-bg.png')",
+            "footer-desktop": "url('/bg-footer-desktop.svg')",
          },
          colors: {
             primary: "#FFFFFF",
