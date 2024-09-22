@@ -71,6 +71,14 @@ const AddressRegisterPage = () => {
          return;
       }
 
+      const cleanedData = {
+         ...userInfo,
+         ...userInformations,
+         ...data,
+         cep: data.cep.replace(/[^\d]/g, ""),
+         neighborhood: "Não informado",
+      };
+
       const response = await fetch(
          "https://sweethubbackend.onrender.com/auth/sign-up",
 
@@ -80,10 +88,7 @@ const AddressRegisterPage = () => {
                "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               ...userInfo,
-               ...userInformations,
-               ...data,
-               neighborhood: "Não informado",
+               ...cleanedData,
             }),
          },
       );
