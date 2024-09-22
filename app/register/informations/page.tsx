@@ -7,6 +7,7 @@ import { AuthRightSide } from "@/app/components/auth-right-side";
 import InputErrorMessage from "@/app/components/input-error-message";
 import { Input } from "@/app/components/input-form/index";
 import InvolveInputError from "@/app/components/involve-input-error";
+import api from "@/app/lib/axios";
 import InformationsFormType from "@/app/types/informations-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -14,11 +15,11 @@ import { useForm } from "react-hook-form";
 import { useHookFormMask } from "use-mask-input";
 
 const GeneralInformationRegisterPage = () => {
-   const router = useRouter();
+   const route = useRouter();
    const [isOpen, setIsOpen] = useState(false);
 
    const handleClose = () => {
-      router.back();
+      route.back();
    };
 
    const handleToggleMenu = () => {
@@ -33,8 +34,30 @@ const GeneralInformationRegisterPage = () => {
 
    const registerWithMask = useHookFormMask(register);
 
-   const handleInformations = (data: InformationsFormType) => {
-      console.log(data);
+   const handleInformations = async (data: InformationsFormType) => {
+      try {
+         const response = await api.post(
+            "/auth/sign-up/validate/company-info",
+            {
+               body: {
+                  cnpj: data.cnpj,
+                  cpf: data.cpf,
+                  companyName: data.corporateName,
+                  fantasyName: data.fantasyName,
+               },
+            },
+         );
+
+         if (response.status !== 201) {
+            console.log("Falide request", response);
+            return;
+         }
+
+         sessionStorage.setItem("userInformations", JSON.stringify(data));
+         route.push("/register/address");
+      } catch (error) {
+         console.log("Failed to register user", error);
+      }
    };
 
    return (
