@@ -14,13 +14,14 @@ import InvolveInputError from "../components/involve-input-error";
 import InputErrorMessage from "../components/input-error-message";
 import RegisterFormType from "../types/register-form";
 import { CheckBoxTerm } from "../components/checkbox-term";
+import api from "../lib/axios";
 
 const RegisterPage = () => {
-   const router = useRouter();
+   const route = useRouter();
    const [isOpen, setIsOpen] = useState(false);
 
    const handleClose = () => {
-      router.back();
+      route.back();
    };
 
    const handleToggleMenu = () => {
@@ -36,8 +37,28 @@ const RegisterPage = () => {
 
    const registerWithMask = useHookFormMask(register);
 
-   const handleRegister = (data: RegisterFormType) => {
-      console.log(data);
+   const handleRegister = async (data: RegisterFormType) => {
+      try {
+         const response = await api.post("/auth/sign-up/validate/user-info", {
+            body: {
+               name: data.name,
+               email: data.email,
+               phone: data.phone,
+               password: data.password,
+               comfirmPassword: data.confirmPassword,
+            },
+         });
+
+         if (response.status !== 201) {
+            console.log("Falide request", response);
+            return;
+         }
+
+         sessionStorage.setItem("userInfo", JSON.stringify(data));
+         route.push("/register/informations");
+      } catch (error) {
+         console.log("Failed to register user", error);
+      }
    };
 
    return (

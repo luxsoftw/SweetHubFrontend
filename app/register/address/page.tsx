@@ -18,7 +18,7 @@ const AddressRegisterPage = () => {
    const [isOpen, setIsOpen] = useState(false);
    const [isCep, setIsCep] = useState("");
 
-   const router = useRouter();
+   const route = useRouter();
 
    const {
       register,
@@ -30,7 +30,7 @@ const AddressRegisterPage = () => {
    const registerWithMask = useHookFormMask(register);
 
    const closePage = () => {
-      router.back();
+      route.back();
    };
 
    const toggleMenu = () => {
@@ -60,8 +60,40 @@ const AddressRegisterPage = () => {
       }
    };
 
-   const handleAddress = (data: AddressFormType) => {
-      console.log(data);
+   const handleAddress = async (data: AddressFormType) => {
+      const userInfo = JSON.parse(sessionStorage.getItem("userInfo") || "{}");
+      const userInformations = JSON.parse(
+         sessionStorage.getItem("userInformations") || "{}",
+      );
+
+      if (!userInfo || !userInformations) {
+         console.log("User information not found");
+         return;
+      }
+
+      const response = await fetch(
+         "https://sweethubbackend.onrender.com/auth/sign-up",
+
+         {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               ...userInfo,
+               ...userInformations,
+               ...data,
+               neighborhood: "Não informado",
+            }),
+         },
+      );
+
+      if (response.status !== 201) {
+         console.log("Falide request", response);
+         return;
+      }
+
+      route.push("/register/validation");
    };
 
    return (
@@ -208,6 +240,33 @@ const AddressRegisterPage = () => {
                      {errors.endereço?.type === "maxLength" && (
                         <InputErrorMessage>
                            Endereço deve conter no máximo 50 caracteres
+                        </InputErrorMessage>
+                     )}
+                  </InvolveInputError>
+               </div>
+
+               <div className="relative w-full">
+                  <Input.Root>
+                     <Input.Form
+                        {...register("numero", {
+                           required: true,
+                           maxLength: 20,
+                        })}
+                        type="text"
+                        placeholder="NÚMERO"
+                     />
+                  </Input.Root>
+
+                  <InvolveInputError>
+                     {errors.numero?.type === "required" && (
+                        <InputErrorMessage>
+                           Estado é obrigatório
+                        </InputErrorMessage>
+                     )}
+
+                     {errors.numero?.type === "maxLength" && (
+                        <InputErrorMessage>
+                           Estado deve conter no máximo 20 caracteres
                         </InputErrorMessage>
                      )}
                   </InvolveInputError>
