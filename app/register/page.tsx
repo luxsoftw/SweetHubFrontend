@@ -38,14 +38,17 @@ const RegisterPage = () => {
    const registerWithMask = useHookFormMask(register);
 
    const handleRegister = async (data: RegisterFormType) => {
+      const cleanedData = {
+         name: data.name,
+         email: data.email,
+         phone: data.phone.replace(/[^\d]/g, ""),
+         password: data.password,
+         comfirmPassword: data.confirmPassword,
+      };
       try {
          const response = await api.post("/auth/sign-up/validate/user-info", {
             body: {
-               name: data.name,
-               email: data.email,
-               phone: data.phone,
-               password: data.password,
-               comfirmPassword: data.confirmPassword,
+               ...cleanedData,
             },
          });
 
@@ -54,7 +57,7 @@ const RegisterPage = () => {
             return;
          }
 
-         sessionStorage.setItem("userInfo", JSON.stringify(data));
+         sessionStorage.setItem("userInfo", JSON.stringify(cleanedData));
          route.push("/register/informations");
       } catch (error) {
          console.log("Failed to register user", error);
