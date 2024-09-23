@@ -171,7 +171,7 @@ export default function Home() {
                   {/* Dashboard Image */}
                   <div className="flex flex-col items-center gap-10 md:w-1/2">
                      <Image
-                        src="/bitmap2.png"
+                        src="/bitmap2.svg"
                         alt="Dashboard"
                         width={500}
                         height={500}
@@ -205,7 +205,7 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-10 md:w-1/2">
                      <Image
-                        src="/Bitmap3.png"
+                        src="/bitmap3.png"
                         alt="Dashboard"
                         width={500}
                         height={500}
