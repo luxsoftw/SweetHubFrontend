@@ -1,17 +1,21 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { TfiClose } from "react-icons/tfi";
 
 interface AuthLeftSideProps {
-   handleClose: () => void;
+   // handleClose: () => void;
    title: string;
    subtitle?: string;
 }
 
-export function AuthLeftSide({
-   title,
-   subtitle,
-   handleClose,
-}: AuthLeftSideProps) {
+export function AuthLeftSide({ title, subtitle }: AuthLeftSideProps) {
+   const route = useRouter();
+
+   const handleClose = () => {
+      route.back();
+   };
+
    return (
       <div className="relative hidden md:flex md:w-1/2 md:flex-col md:items-center md:justify-center md:gap-6 md:rounded-l-3xl md:border-blue-800 md:bg-blue-800 md:p-6 md:text-center md:text-white">
          <button
