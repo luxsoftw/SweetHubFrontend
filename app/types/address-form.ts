@@ -4,6 +4,7 @@ interface AddressFormType {
    cidade: string;
    endereço: string;
    numero: string;
+   neighborhood: string;
 }
 
 export default AddressFormType;

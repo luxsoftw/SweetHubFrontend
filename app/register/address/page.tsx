@@ -43,6 +43,7 @@ const AddressRegisterPage = () => {
          setValue("estado", response.data.estado);
          setValue("cidade", response.data.localidade);
          setValue("endereço", response.data.logradouro);
+         setValue("neighborhood", response.data.bairro);
       } catch (error) {
          console.log("Erro ao buscar CEP:", error);
       }
@@ -64,7 +65,6 @@ const AddressRegisterPage = () => {
          ...userInformations,
          ...data,
          cep: data.cep.replace(/[^\d]/g, ""),
-         neighborhood: "Não informado",
       };
 
       const response = await fetch(
@@ -228,36 +228,11 @@ const AddressRegisterPage = () => {
                </InvolveInputError>
             </div>
 
-            <div className="relative w-full">
-               <Input.Root>
-                  <Input.Form
-                     {...register("numero", {
-                        required: true,
-                        maxLength: 20,
-                     })}
-                     type="text"
-                     placeholder="NÚMERO"
-                  />
-               </Input.Root>
-
-               <InvolveInputError>
-                  {errors.numero?.type === "required" && (
-                     <InputErrorMessage>Estado é obrigatório</InputErrorMessage>
-                  )}
-
-                  {errors.numero?.type === "maxLength" && (
-                     <InputErrorMessage>
-                        Estado deve conter no máximo 20 caracteres
-                     </InputErrorMessage>
-                  )}
-               </InvolveInputError>
-            </div>
-
             <div className="flex gap-4">
                <div className="relative w-2/3">
                   <Input.Root>
                      <input
-                        {...register("numero", {
+                        {...register("neighborhood", {
                            required: true,
                         })}
                         type="text"
