@@ -100,7 +100,7 @@ const AddressRegisterPage = () => {
          </div>
          <form
             onSubmit={handleSubmit(handleAddress)}
-            className="flex flex-col items-center gap-6"
+            className="mt-4 flex w-full flex-grow flex-col space-y-8 md:mt-8"
          >
             <div className="relative w-full">
                <Input.Root>
@@ -253,7 +253,63 @@ const AddressRegisterPage = () => {
                </InvolveInputError>
             </div>
 
-            <AuthButton type="submit" title="Continuar" />
+            <div className="flex gap-4">
+               <div className="relative w-2/3">
+                  <Input.Root>
+                     <input
+                        {...register("numero", {
+                           required: true,
+                        })}
+                        type="text"
+                        placeholder="BAIRRO"
+                        className="flex h-10 w-28 flex-grow rounded-md bg-transparent px-5 outline-none"
+                     />
+                  </Input.Root>
+
+                  <InvolveInputError>
+                     {errors.numero?.type === "required" && (
+                        <InputErrorMessage>
+                           Estado é obrigatório
+                        </InputErrorMessage>
+                     )}
+
+                     {errors.numero?.type === "maxLength" && (
+                        <InputErrorMessage>
+                           Estado deve conter no máximo 20 caracteres
+                        </InputErrorMessage>
+                     )}
+                  </InvolveInputError>
+               </div>
+
+               <div className="relative w-1/3">
+                  <Input.Root>
+                     <input
+                        {...register("numero", {
+                           required: true,
+                           maxLength: 20,
+                        })}
+                        type="text"
+                        placeholder="NÚMERO"
+                        className="h-10 w-28 rounded-md bg-transparent px-5 outline-none"
+                     />
+                  </Input.Root>
+
+                  <InvolveInputError>
+                     {errors.numero?.type === "required" && (
+                        <InputErrorMessage>
+                           Senha é obrigatória
+                        </InputErrorMessage>
+                     )}
+
+                     {errors.numero?.type === "minLength" && (
+                        <InputErrorMessage>
+                           Senha deve ter no mínimo 8 caracteres
+                        </InputErrorMessage>
+                     )}
+                  </InvolveInputError>
+               </div>
+            </div>
+            <AuthButton type="submit" title="Finalizar" />
          </form>
       </>
    );
