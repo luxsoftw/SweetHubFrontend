@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
 import { IoMenu } from "react-icons/io5";
@@ -5,17 +7,19 @@ import MenuMobile from "./menu-mobile";
 
 interface AuthRightSideProps {
    title?: string;
-   isOpen: boolean;
-   handleToggleMenu: () => void;
    children: React.ReactNode;
 }
 
 export function AuthRightSide({
    title = "Registrar",
-   isOpen,
-   handleToggleMenu,
    children,
 }: AuthRightSideProps) {
+   const [isOpen, setIsOpen] = useState(false);
+
+   const handleToggleMenu = () => {
+      setIsOpen(!isOpen);
+   };
+
    return (
       <div className="flex w-full flex-col p-4 md:w-1/2 md:flex-grow md:p-8">
          <div className="flex w-full flex-col gap-10 p-4 md:flex-grow md:p-6">
