@@ -26,7 +26,10 @@ export const ItemNavigation = ({
                   : "text-black hover:text-gray-600"
             }`}
          >
-            <Icon className="text-black" size={20} />
+            <Icon
+               className={`${isActive ? "text-white" : "text-black"}`}
+               size={20}
+            />
             <h1 className="flex-nowrap p-3 text-base">{name}</h1>
          </Link>
       </li>
