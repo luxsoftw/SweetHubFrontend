@@ -86,7 +86,7 @@ const AddressRegisterPage = () => {
          return;
       }
 
-      route.push("/register/validation");
+      route.push("/validation");
    };
 
    return (

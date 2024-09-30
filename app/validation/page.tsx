@@ -4,7 +4,6 @@ import { AuthLayout } from "@/app/components/auth-layout";
 import { AuthLeftSide } from "@/app/components/auth-left-side";
 import { AuthRightSide } from "@/app/components/auth-right-side";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const ValidationPage = () => {
    const router = useRouter();
@@ -13,28 +12,13 @@ const ValidationPage = () => {
       router.back();
    }
 
-   const [isOpen, setIsOpen] = useState(false);
-
-   const handleClose = () => {
-      router.back();
-   };
-
-   const handleToggleMenu = () => {
-      setIsOpen(!isOpen);
-   };
-
    return (
       <AuthLayout>
          <AuthLeftSide
             title="Prazer em conhece-lo :)"
             subtitle="Basta se registrar para se juntar a nós"
-            handleClose={handleClose}
          />
-         <AuthRightSide
-            title="Validar"
-            isOpen={isOpen}
-            handleToggleMenu={handleToggleMenu}
-         >
+         <AuthRightSide title="Validar">
             <div className="flex flex-row items-center justify-center gap-5">
                <div className="h-0.5 w-14 rounded bg-black/30 md:h-[0.080rem] md:w-20"></div>
                <h4 className="text-nowrap font-light text-black/50">
