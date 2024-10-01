@@ -11,12 +11,12 @@ const MenuMobile = ({ isOpen, toggleMenu }: MenuMobileProps) => {
 
    return (
       <section
-         className={`fixed inset-0 z-50 text-primary backdrop-blur-sm ${isOpen ? "animate-opacity" : "animate-closeopacity"} `}
+         className={`fixed inset-0 z-50 text-white backdrop-blur-sm ${isOpen ? "animate-opacity" : "animate-closeopacity"} `}
       >
          <div
             className={`absolute right-0 top-0 z-50 h-screen w-[75%] max-w-[500px] border-l border-blue-900 bg-tertiary ${isOpen ? "animate-menubar" : "animate-closemenubar"}`}
          >
-            <div className="flex justify-between p-5 text-primary hover:text-red-500">
+            <div className="flex justify-between p-5 text-white hover:text-red-500">
                <span className="text-xl">Menu</span>
 
                <button>
