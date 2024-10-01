@@ -20,9 +20,7 @@ const Faq = ({ faqs }: FaqProps) => {
                <div
                   key={faq.id}
                   className={` ${
-                     openIndex === faq.id
-                        ? "bg-white"
-                        : "bg-white text-secondary"
+                     openIndex === faq.id ? "bg-white" : "bg-white text-black"
                   } `}
                >
                   <button
@@ -36,9 +34,9 @@ const Faq = ({ faqs }: FaqProps) => {
                      </span>
 
                      <div
-                        className={`rounded-sm" ${
+                        className={`rounded-sm bg-transparent ${
                            openIndex === faq.id
-                              ? "rounded-md bg-transparent text-white"
+                              ? "rounded-md text-white"
                               : "bg-primary"
                         }`}
                      >
@@ -59,7 +57,7 @@ const Faq = ({ faqs }: FaqProps) => {
                   >
                      <p
                         className={`my-2 px-5 ${
-                           openIndex == faq.id && "py-2 text-secondary"
+                           openIndex == faq.id && "py-2 text-black"
                         }`}
                      >
                         {faq.answer}

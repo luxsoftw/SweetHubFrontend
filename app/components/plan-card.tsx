@@ -33,7 +33,7 @@ export function PlanCard({
 }: PlanCardProps) {
    return (
       <div
-         className={`flex w-[263px] flex-col justify-between gap-3 overflow-hidden rounded-3xl text-secondary/50 shadow-rounded ${isBestValue ? "h-[450px]" : "h-[400px]"}`}
+         className={`flex w-[263px] flex-col justify-between gap-3 overflow-hidden rounded-3xl text-black/50 shadow-rounded ${isBestValue ? "h-[450px]" : "h-[400px]"}`}
       >
          <div
             className={`flex flex-col items-center gap-5 p-3 ${isBestValue ? "rounded-xl bg-[#F7A932]" : "bg-[#fff]"}`}

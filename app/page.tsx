@@ -10,10 +10,10 @@ import { plans } from "./lib/plans";
 
 export default function Home() {
    return (
-      <div className="text-primary">
+      <div className="text-white">
          {/* Header e Negócio */}
          <section className="h-[420px] bg-bg-header bg-contain bg-no-repeat">
-            <Header color="text-secondary" />
+            <Header color="text-black" />
 
             <section className="flex flex-col items-center gap-4 pt-2">
                <h1 className="text-2xl font-light">
@@ -27,7 +27,7 @@ export default function Home() {
                </p>
 
                <div className="flex items-center gap-1">
-                  <a className="rounded-full bg-[#F7A932] p-1 text-secondary">
+                  <a className="rounded-full bg-[#F7A932] p-1 text-black">
                      <IoPlayOutline />
                   </a>
 
@@ -42,7 +42,7 @@ export default function Home() {
 
          {/* dashboard image */}
          <section className="relative z-10 flex items-center gap-5 px-5 sm:justify-center">
-            <div className="flex flex-col items-center justify-center text-secondary/50 sm:flex-row sm:gap-16 lg:gap-28">
+            <div className="flex flex-col items-center justify-center text-black/50 sm:flex-row sm:gap-16 lg:gap-28">
                {/* teste grátis */}
                <div className="flex flex-col items-center">
                   <h1 className="text-2xl font-bold text-[#F7A932] lg:text-5xl">
@@ -146,16 +146,16 @@ export default function Home() {
 
          {/* gestão da Loja */}
          <section className="mt-20 flex flex-col items-center bg-gestao bg-cover bg-no-repeat pb-32 pt-24 md:my-20 md:bg-wave md:pb-40 md:pt-40">
-            <div className="container mx-auto flex flex-col px-4">
+            <div className="container mx-auto flex flex-col px-4 lg:mt-20">
                <div className="flex flex-col items-center justify-center md:flex-row-reverse md:items-center md:justify-end md:gap-10">
                   {/* Domine a Gestão Da Sua Loja */}
-                  <div className="mb-10 flex flex-col items-start md:mb-0">
+                  <div className="mb-10 flex flex-col items-center md:mb-0 lg:items-start">
                      <div>
-                        <h2 className="mb-4 text-center text-2xl font-semibold text-primary/50 md:text-left md:text-4xl">
+                        <h2 className="mb-4 text-center text-2xl font-semibold text-white/50 md:text-left md:text-4xl">
                            Domine a Gestão
                         </h2>
-                        <h2 className="mb-4 text-center text-2xl font-semibold text-primary/50 md:text-left md:text-4xl">
-                           Da <span className="text-primary">Sua Loja</span>
+                        <h2 className="mb-4 text-center text-2xl font-semibold text-white/50 md:text-left md:text-4xl">
+                           Da <span className="text-white">Sua Loja</span>
                         </h2>
                      </div>
                      <div className="mb-6 h-1 w-32 bg-[#F7A932]"></div>
@@ -163,7 +163,7 @@ export default function Home() {
                         Controle de estoque, clientes e PDV em uma única
                         plataforma. Teste grátis!
                      </p>
-                     <button className="hidden self-center rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-secondary md:flex md:text-base">
+                     <button className="hidden self-center rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-black md:flex md:text-base">
                         VER DETALHES
                      </button>
                   </div>
@@ -177,7 +177,7 @@ export default function Home() {
                         height={500}
                         className="mx-auto w-full max-w-xl"
                      />
-                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-secondary md:hidden md:text-base">
+                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-black md:hidden md:text-base">
                         VER DETALHES
                      </button>
                   </div>
@@ -186,11 +186,11 @@ export default function Home() {
                {/* Venda com Flexibilidade e Poder */}
                <div className="mt-20 flex flex-col gap-0 md:flex-row md:items-center md:justify-between md:gap-10">
                   <div className="flex flex-col items-center justify-center md:mb-0 md:w-1/2 md:items-end">
-                     <h2 className="mb-4 text-2xl font-semibold text-primary/50 md:text-4xl">
+                     <h2 className="mb-4 text-2xl font-semibold text-white/50 md:text-4xl">
                         Venda com{" "}
                      </h2>
-                     <h2 className="mb-4 text-center text-2xl font-semibold text-primary md:text-4xl">
-                        Flexibilidade <span className="text-primary/50">e</span>{" "}
+                     <h2 className="mb-4 text-center text-2xl font-semibold text-white md:text-4xl">
+                        Flexibilidade <span className="text-white/50">e</span>{" "}
                         Poder
                      </h2>
                      <div className="mb-6 h-1 w-32 bg-[#F7A932]"></div>
@@ -198,7 +198,7 @@ export default function Home() {
                         Página de vendas personalizável para se adaptar às suas
                         necessidades. Experimente grátis!
                      </p>
-                     <button className="hidden rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-secondary md:flex md:text-base">
+                     <button className="hidden rounded-3xl bg-[#F7A932] px-8 py-2 text-sm text-black md:flex md:text-base">
                         VER DETALHES
                      </button>
                   </div>
@@ -211,7 +211,7 @@ export default function Home() {
                         height={500}
                         className="mx-auto w-full max-w-xl"
                      />
-                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-secondary md:hidden md:text-base">
+                     <button className="rounded-3xl bg-[#F7A932] px-6 py-2 text-sm text-black md:hidden md:text-base">
                         VER DETALHES
                      </button>
                   </div>
@@ -234,11 +234,11 @@ export default function Home() {
          </section>
 
          <section className="flex h-[840px] flex-col items-center gap-10 bg-faq bg-cover bg-no-repeat">
-            <h1 className="pt-40 text-5xl text-primary/30">FAQ</h1>
+            <h1 className="pt-40 text-5xl text-white/30">FAQ</h1>
 
             <div className="h-[10px] w-[116px] rounded-lg bg-[#F7A932]"></div>
 
-            <p className="w-[269px] text-center text-primary/80">
+            <p className="w-[269px] text-center text-white/80">
                Vestibulum sit amet tortor sit amet libero lobortis semper at et
                odio.
             </p>
