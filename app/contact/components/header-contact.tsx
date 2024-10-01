@@ -12,7 +12,7 @@ const HeaderContact = () => {
    };
 
    return (
-      <header className="flex h-14 items-center justify-between text-primary">
+      <header className="flex h-14 items-center justify-between text-white">
          <div>
             <h1 className="font-semibol pb-3 text-3xl">Contato</h1>
             <div className="h-1.5 w-20 rounded-md bg-blue-600"></div>
