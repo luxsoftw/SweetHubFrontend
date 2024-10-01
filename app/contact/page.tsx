@@ -39,7 +39,7 @@ const Contact = () => {
             </div>
 
             <button onClick={handleGoBack} className="hidden lg:flex">
-               <TfiClose size={25} className="text-primary" />
+               <TfiClose size={25} className="text-white" />
             </button>
 
             <section className="hidden text-white lg:flex lg:flex-col">
