@@ -220,7 +220,7 @@ export default function Home() {
          </section>
 
          {/* Planos */}
-         <section className="flex flex-col items-center gap-32 py-14 md:flex-row md:items-center md:justify-center md:gap-0">
+         <section className="flex flex-col items-center gap-32 py-14 md:flex-row md:items-center md:justify-center md:gap-0 lg:pb-24">
             {plans.map((plan, index) => (
                <PlanCard
                   key={index}
@@ -233,17 +233,29 @@ export default function Home() {
             ))}
          </section>
 
-         <section className="flex h-[840px] flex-col items-center gap-10 bg-faq bg-cover bg-no-repeat">
-            <h1 className="pt-40 text-5xl text-white/30">FAQ</h1>
+         <section className="flex h-[840px] flex-col items-center justify-center gap-10 bg-faq bg-cover bg-no-repeat lg:h-[1200px] lg:flex-row lg:items-start lg:gap-44 lg:bg-desktop-faq lg:pt-64">
+            <div className="flex flex-col items-center gap-10 lg:items-start">
+               <h1 className="lg: pt-40 text-5xl text-white/30 lg:pt-0">FAQ</h1>
 
-            <div className="h-[10px] w-[116px] rounded-lg bg-[#F7A932]"></div>
+               <div className="h-[10px] w-[116px] rounded-lg bg-[#F7A932]"></div>
 
-            <p className="w-[269px] text-center text-white/80">
-               Vestibulum sit amet tortor sit amet libero lobortis semper at et
-               odio.
-            </p>
+               <p className="w-[269px] text-center text-white/80 lg:w-[410px] lg:text-start lg:text-xl">
+                  Vestibulum sit amet tortor sit amet libero lobortis semper at
+                  et odio.
+               </p>
 
-            <Faq faqs={listfaqs} />
+               <Image
+                  src="/faq-image.png"
+                  alt="FAQ"
+                  width={500}
+                  height={500}
+                  className="pl-20"
+               />
+            </div>
+
+            <div className="w-full lg:w-[600px]">
+               <Faq faqs={listfaqs} />
+            </div>
          </section>
 
          <Footer />

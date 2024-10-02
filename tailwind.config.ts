@@ -23,6 +23,7 @@ const config: Config = {
             footer: "url('/bg-footer.png')",
             wave: "url('/wave-desktop-bg.png')",
             "footer-desktop": "url('/bg-footer-desktop.svg')",
+            "desktop-faq": "url('/desktop-faq.png')",
          },
          colors: {
             primary: {
