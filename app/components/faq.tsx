@@ -14,7 +14,7 @@ const Faq = ({ faqs }: FaqProps) => {
    };
 
    return (
-      <div className="mx-auto h-[360px] max-w-2xl px-2 py-4">
+      <div className="mx-auto h-[360px] max-w-2xl px-2 py-4 lg:mx-0 lg:w-full">
          <div className="space-y-2">
             {faqs.map((faq) => (
                <div
@@ -27,9 +27,9 @@ const Faq = ({ faqs }: FaqProps) => {
                      onClick={() => {
                         toggleFAQ(faq.id);
                      }}
-                     className={`flex w-full items-center justify-between px-3 py-2 text-left focus:outline-none ${openIndex === faq.id && "bg-[#F7A932]"}`}
+                     className={`flex w-full items-center justify-between px-3 py-2 text-left focus:outline-none lg:py-6 ${openIndex === faq.id && "bg-[#F7A932]"}`}
                   >
-                     <span className="flex items-center gap-1 font-medium">
+                     <span className="flex items-center gap-1 font-medium lg:text-xl">
                         {faq.question}
                      </span>
 
@@ -57,7 +57,8 @@ const Faq = ({ faqs }: FaqProps) => {
                   >
                      <p
                         className={`my-2 px-5 ${
-                           openIndex == faq.id && "py-2 text-black"
+                           openIndex == faq.id &&
+                           "py-2 text-black lg:py-5 lg:text-xl"
                         }`}
                      >
                         {faq.answer}
