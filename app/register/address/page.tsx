@@ -10,6 +10,7 @@ import InvolveInputError from "@/app/components/involve-input-error";
 import InputErrorMessage from "@/app/components/input-error-message";
 import AddressFormType from "@/app/types/address-form";
 import axios from "axios";
+import { VscLoading } from "react-icons/vsc";
 
 const AddressRegisterPage = () => {
    const [isCep, setIsCep] = useState("");
@@ -20,7 +21,7 @@ const AddressRegisterPage = () => {
       register,
       handleSubmit,
       setValue,
-      formState: { errors },
+      formState: { errors, isSubmitting },
    } = useForm<AddressFormType>();
 
    const registerWithMask = useHookFormMask(register);
@@ -40,9 +41,9 @@ const AddressRegisterPage = () => {
             return;
          }
 
-         setValue("estado", response.data.estado);
-         setValue("cidade", response.data.localidade);
-         setValue("endereço", response.data.logradouro);
+         setValue("state", response.data.estado);
+         setValue("city", response.data.localidade);
+         setValue("fullAddress", response.data.logradouro);
          setValue("neighborhood", response.data.bairro);
       } catch (error) {
          console.log("Erro ao buscar CEP:", error);
@@ -133,7 +134,7 @@ const AddressRegisterPage = () => {
             <div className="relative w-full">
                <Input.Root>
                   <Input.Form
-                     {...register("estado", {
+                     {...register("state", {
                         required: true,
                         minLength: 2,
                         maxLength: 20,
@@ -144,17 +145,17 @@ const AddressRegisterPage = () => {
                </Input.Root>
 
                <InvolveInputError>
-                  {errors.estado?.type === "required" && (
+                  {errors.state?.type === "required" && (
                      <InputErrorMessage>Estado é obrigatório</InputErrorMessage>
                   )}
 
-                  {errors.estado?.type === "minLength" && (
+                  {errors.state?.type === "minLength" && (
                      <InputErrorMessage>
                         Estado deve conter no mínimo 2 caracteres
                      </InputErrorMessage>
                   )}
 
-                  {errors.estado?.type === "maxLength" && (
+                  {errors.state?.type === "maxLength" && (
                      <InputErrorMessage>
                         Estado deve conter no máximo 20 caracteres
                      </InputErrorMessage>
@@ -165,7 +166,7 @@ const AddressRegisterPage = () => {
             <div className="relative w-full">
                <Input.Root>
                   <Input.Form
-                     {...register("cidade", {
+                     {...register("city", {
                         required: true,
                         minLength: 2,
                         maxLength: 20,
@@ -176,17 +177,17 @@ const AddressRegisterPage = () => {
                </Input.Root>
 
                <InvolveInputError>
-                  {errors.cidade?.type === "required" && (
+                  {errors.city?.type === "required" && (
                      <InputErrorMessage>Cidade é obrigatória</InputErrorMessage>
                   )}
 
-                  {errors.cidade?.type === "minLength" && (
+                  {errors.city?.type === "minLength" && (
                      <InputErrorMessage>
                         Cidade deve conter no mínimo 2 caracteres
                      </InputErrorMessage>
                   )}
 
-                  {errors.cidade?.type === "maxLength" && (
+                  {errors.city?.type === "maxLength" && (
                      <InputErrorMessage>
                         Cidade deve conter no máximo 20 caracteres
                      </InputErrorMessage>
@@ -197,7 +198,7 @@ const AddressRegisterPage = () => {
             <div className="relative w-full">
                <Input.Root>
                   <Input.Form
-                     {...register("endereço", {
+                     {...register("fullAddress", {
                         required: true,
                         minLength: 2,
                         maxLength: 50,
@@ -208,19 +209,19 @@ const AddressRegisterPage = () => {
                </Input.Root>
 
                <InvolveInputError>
-                  {errors.endereço?.type === "required" && (
+                  {errors.fullAddress?.type === "required" && (
                      <InputErrorMessage>
                         Endereço é obrigatório
                      </InputErrorMessage>
                   )}
 
-                  {errors.endereço?.type === "minLength" && (
+                  {errors.fullAddress?.type === "minLength" && (
                      <InputErrorMessage>
                         Endereço deve conter no mínimo 2 caracteres
                      </InputErrorMessage>
                   )}
 
-                  {errors.endereço?.type === "maxLength" && (
+                  {errors.fullAddress?.type === "maxLength" && (
                      <InputErrorMessage>
                         Endereço deve conter no máximo 50 caracteres
                      </InputErrorMessage>
@@ -242,13 +243,13 @@ const AddressRegisterPage = () => {
                   </Input.Root>
 
                   <InvolveInputError>
-                     {errors.numero?.type === "required" && (
+                     {errors.neighborhood?.type === "required" && (
                         <InputErrorMessage>
                            Estado é obrigatório
                         </InputErrorMessage>
                      )}
 
-                     {errors.numero?.type === "maxLength" && (
+                     {errors.neighborhood?.type === "maxLength" && (
                         <InputErrorMessage>
                            Estado deve conter no máximo 20 caracteres
                         </InputErrorMessage>
@@ -259,7 +260,7 @@ const AddressRegisterPage = () => {
                <div className="relative w-1/3">
                   <Input.Root>
                      <input
-                        {...register("numero", {
+                        {...register("addressNumber", {
                            required: true,
                            maxLength: 20,
                         })}
@@ -270,13 +271,13 @@ const AddressRegisterPage = () => {
                   </Input.Root>
 
                   <InvolveInputError>
-                     {errors.numero?.type === "required" && (
+                     {errors.addressNumber?.type === "required" && (
                         <InputErrorMessage>
                            Senha é obrigatória
                         </InputErrorMessage>
                      )}
 
-                     {errors.numero?.type === "minLength" && (
+                     {errors.addressNumber?.type === "minLength" && (
                         <InputErrorMessage>
                            Senha deve ter no mínimo 8 caracteres
                         </InputErrorMessage>
@@ -284,7 +285,18 @@ const AddressRegisterPage = () => {
                   </InvolveInputError>
                </div>
             </div>
-            <AuthButton type="submit" title="Finalizar" />
+
+            {isSubmitting ? (
+               <button
+                  disabled
+                  className="flex w-full items-center justify-center gap-2 rounded bg-orange-400 p-2 text-white transition-colors hover:bg-orange-500 md:max-w-48 md:self-end md:rounded-3xl md:text-base"
+               >
+                  <VscLoading className="size-4 animate-spin" />
+                  Finalizando...
+               </button>
+            ) : (
+               <AuthButton type="submit" title="Finalizar" />
+            )}
          </form>
       </>
    );
