@@ -19,10 +19,6 @@ const LoginPage = () => {
    const [isOpen, setIsOpen] = useState(false);
    const [showPassword, setShowPassword] = useState(false);
 
-   const handleClose = () => {
-      router.back();
-   };
-
    const handleToggleMenu = () => {
       setIsOpen(!isOpen);
    };
@@ -37,13 +33,33 @@ const LoginPage = () => {
       formState: { errors },
    } = useForm<LoginFormType>();
 
-   const handleLogin = (data: LoginFormType) => {
-      console.log(data);
+   const handleLogin = async (data: LoginFormType) => {
+      const response = await fetch(
+         "https://sweethubbackend.onrender.com/auth/sign-in",
+         {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+         },
+      );
+
+      if (response.status !== 201) {
+         console.log("Failed to login", response);
+         return;
+      }
+
+      const { token } = await response.json();
+
+      localStorage.setItem("token", token);
+
+      router.push("/system");
    };
 
    return (
       <AuthLayout>
-         <AuthLeftSide title="Bem vindo de volta" handleClose={handleClose} />
+         <AuthLeftSide title="Bem vindo de volta" />
          <div className="flex w-full flex-col p-4 md:w-1/2 md:flex-grow md:p-8">
             <div className="flex w-full flex-col gap-10 p-4 md:flex-grow md:p-6">
                <header className="flex flex-row items-center justify-between md:flex md:items-center md:justify-between">
