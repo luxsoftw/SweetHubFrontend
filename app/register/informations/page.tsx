@@ -8,6 +8,7 @@ import api from "@/app/lib/axios";
 import InformationsFormType from "@/app/types/informations-form";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { VscLoading } from "react-icons/vsc";
 import { useHookFormMask } from "use-mask-input";
 
 const GeneralInformationRegisterPage = () => {
@@ -16,7 +17,7 @@ const GeneralInformationRegisterPage = () => {
    const {
       register,
       handleSubmit,
-      formState: { errors },
+      formState: { errors, isSubmitting },
    } = useForm<InformationsFormType>();
 
    const registerWithMask = useHookFormMask(register);
@@ -196,7 +197,17 @@ const GeneralInformationRegisterPage = () => {
             </InvolveInputError>
          </div>
 
-         <AuthButton title="CONTINUAR" />
+         {isSubmitting ? (
+            <button
+               disabled
+               className="flex w-full items-center justify-center gap-2 rounded bg-orange-400 p-2 text-white transition-colors hover:bg-orange-500 md:max-w-48 md:self-end md:rounded-3xl md:text-base"
+            >
+               <VscLoading className="size-4 animate-spin" />
+               Enviando...
+            </button>
+         ) : (
+            <AuthButton type="submit" title="Finalizar" />
+         )}
       </form>
    );
 };

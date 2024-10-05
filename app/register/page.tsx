@@ -10,6 +10,7 @@ import RegisterFormType from "../types/register-form";
 import { CheckBoxTerm } from "../components/checkbox-term";
 import api from "../lib/axios";
 import { useRouter } from "next/navigation";
+import { VscLoading } from "react-icons/vsc";
 
 const RegisterPage = () => {
    const route = useRouter();
@@ -18,7 +19,7 @@ const RegisterPage = () => {
       register,
       getValues,
       handleSubmit,
-      formState: { errors },
+      formState: { errors, isSubmitting },
    } = useForm<RegisterFormType>();
 
    const registerWithMask = useHookFormMask(register);
@@ -29,7 +30,7 @@ const RegisterPage = () => {
          email: data.email,
          phone: data.phone.replace(/[^\d]/g, ""),
          password: data.password,
-         comfirmPassword: data.confirmPassword,
+         confirmPassword: data.confirmPassword,
       };
       try {
          const response = await api.post("/auth/sign-up/validate/user-info", {
@@ -227,7 +228,17 @@ const RegisterPage = () => {
                </InvolveInputError>
             </div>
 
-            <AuthButton title="CONTINUAR" />
+            {isSubmitting ? (
+               <button
+                  disabled
+                  className="flex w-full items-center justify-center gap-2 rounded bg-orange-400 p-2 text-white transition-colors hover:bg-orange-500 md:max-w-48 md:self-end md:rounded-3xl md:text-base"
+               >
+                  <VscLoading className="size-4 animate-spin" />
+                  Enviando...
+               </button>
+            ) : (
+               <AuthButton type="submit" title="Continuar" />
+            )}
          </div>
       </form>
    );
