@@ -1,9 +1,9 @@
 interface AddressFormType {
    cep: string;
-   estado: string;
-   cidade: string;
-   endereço: string;
-   numero: string;
+   state: string;
+   city: string;
+   fullAddress: string;
+   addressNumber: string;
    neighborhood: string;
 }
 
