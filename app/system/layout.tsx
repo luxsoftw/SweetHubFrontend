@@ -17,7 +17,11 @@ export default function RootLayout({
          <div className="grid h-screen grid-cols-[250px_1fr] grid-rows-[auto_1fr]">
             <Sidebar className="row-span-2" />
             <HeaderSystem>
-               <main className="overflow-auto p-6">{children}</main>
+               <main className="flex flex-col items-center overflow-hidden bg-[#F5F6FA] p-6">
+                  <div className="h-full w-full rounded-xl bg-white">
+                     {children}
+                  </div>
+               </main>
             </HeaderSystem>
          </div>
       </>
