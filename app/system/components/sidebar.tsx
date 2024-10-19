@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { FaListCheck } from "react-icons/fa6";
 import { MdOutlineAvTimer } from "react-icons/md";
-import { PiSquaresFourLight } from "react-icons/pi";
 import { CiHeart, CiSettings, CiPower } from "react-icons/ci";
 import { LuMessagesSquare } from "react-icons/lu";
 import { TfiViewList } from "react-icons/tfi";
 import SymbroLogo from "@/public/SymbroLogo.svg";
 import { Separator } from "@/app/components/ui/separator";
 import { ItemNavigation } from "./item-navigation";
+import { DropDownItem, DropdownNavigation } from "./dropdown-navigation";
+import { PiSquaresFourLight } from "react-icons/pi";
 
 interface SidebarProps {
    className?: string;
@@ -33,11 +34,18 @@ export function Sidebar({ className }: SidebarProps) {
                         name="Dashboard"
                         icon={MdOutlineAvTimer}
                      />
-                     <ItemNavigation
-                        href="/system/pricing"
-                        name="Princing"
+
+                     <DropdownNavigation
+                        title="Precificação"
                         icon={PiSquaresFourLight}
-                     />
+                     >
+                        <DropDownItem href="/system/pricing">
+                           Configurações
+                        </DropDownItem>
+                        <DropDownItem href="/system/pricing/ingredients">
+                           Ingredientes
+                        </DropDownItem>
+                     </DropdownNavigation>
 
                      <ItemNavigation
                         href="/system/favorites"
